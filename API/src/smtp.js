@@ -7,7 +7,7 @@ const apiUrl = 'https://api.brevo.com/v3/smtp/email';
 const apiKey = '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';
 
 // Dirección de correo electrónico a la que se enviará el código de verificación
-const recipientEmail = 'jordi.cahuas20@gmail.com';
+const recipientEmail = 'david-alfredo21@hotmail.com';
 
 // Generar un código de verificación (puedes implementar tu lógica aquí)
 const verificationCode = generateVerificationCode();
@@ -15,17 +15,24 @@ const verificationCode = generateVerificationCode();
 // Datos del correo electrónico con el código de verificación
 const emailData = {
   sender: {
-    name: 'david',
+    name: 'Código autentificación SEI',
     email: 'cursosutn95@gmail.com',
   },
   to: [
     {
       email: recipientEmail,
-      name: 'YO',
+      name: 'JORDI',
     },
   ],
   subject: 'Código de Verificación',
-  htmlContent: `<html><head></head><body><p>Tu código de verificación es: <strong>${verificationCode}</strong></p></body></html>`,
+  htmlContent: `
+    <html>
+        <head>
+        </head>
+        <body>
+            <p>Tu código de verificación es: <strong>${verificationCode}</strong></p>
+        </body>
+    </html>`,
 };
 
 // Configuración de la solicitud HTTP
