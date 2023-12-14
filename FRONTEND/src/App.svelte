@@ -1,13 +1,9 @@
-<script>
-  import Form from "./Form.svelte";
-  import Form2 from "./Form2.svelte";
+<!-- <script>
+  // import Form from "./Form.svelte";
 </script>
 
-<main>
-  <Form />
-  <Form2 />
-</main>
+<h1>jija</h1>
+  <Form /> -->
 
-<style>
-  
-</style>
+
+

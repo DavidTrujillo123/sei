@@ -1,9 +1,8 @@
 const {} = require("express");
 const { db } = require("../config/connection");
 
-
 const isUser = async (req, res) => {
-    const { us_email, us_password } = req.query;
+    const { us_email, us_password } = req.body;
     try {
       const response = await db.oneOrNone(
         `SELECT * FROM select_users(1)
