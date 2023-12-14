@@ -1,1 +1,1 @@
-<h1>Envido correo</h1>
+<h1>Enviado correo</h1>

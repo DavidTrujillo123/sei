@@ -10,4 +10,7 @@ export function redirect(response){
     if(response.res == "TRUE"){
         window.location.href = '../src/Email_send.svelte'
     }
+    else{
+        
+    }
 }
