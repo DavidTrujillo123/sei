@@ -6,8 +6,10 @@ app.set("views", __dirname + "/views");
 
 //middlewears
 app.use(express.json());
+//app.use('/src',express.static('/src'));
+//app.use(express.static(__dirname + '/public'));
 app.use(express.urlencoded({extended:true}));
-
+app.use('/recursos',express.static(process.cwd()+'/public'));
 //Routes
 app.get('/', (req,res) => {
     res.render('login', {title: 'Login SEI'})
