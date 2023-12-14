@@ -1,31 +1,25 @@
 export default class Login {
-    async isUser(us_email_p, us_password_p) {
-        const apiUrl = 'http://localhost:3000/isUser';
-
-        const postData_p = {
-            us_email: us_email_p,
-            us_password: us_password_p
-        };
-
-        console.log(postData_p);
-
+    async postData(urlApi, obj_data){
         try {
-            const response = await fetch(apiUrl, {
+            const response = await fetch(urlApi, {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
                 },
-                body: JSON.stringify(postData_p)
+                body: JSON.stringify(obj_data),
             });
-
-            // Manejar la respuesta de la API
-            const datar = await response.json();
-            console.log(datar); // Puedes realizar acciones con la respuesta aquí
-
-
-        } catch (error) {
-            console.error('Error:', error);
+            const data = await response.json();
+            return data;
+        } catch (err) {
+            console.error('Error during login:', err);
+            throw err; // Puedes manejar el error según tus necesidades
         }
+    }
+    
+    async isUser(obj_data){
+        const urlApi = 'http://localhost:3000/isUser';
+        const response = await this.postData(urlApi, obj_data);
+        return response;
     }
 }
 

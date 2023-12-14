@@ -1,12 +1,13 @@
 import Login from '../Model/Login.mjs';
-const btn_login = document.getElementById('btn_login');
-const us_email = document.getElementById('exampleInputEmail1');
-const us_password = document.getElementById('exampleInputPassword1');
-        
-function login(){
+
+export async function login(obj_data) {
     const user = new Login();
-    let response = user.isUser(us_email, us_password);
-    console.log(response);
+    let response = await user.isUser(obj_data);
+    return response;
 }
 
-module.exports = login;
+export function redirect(response){
+    if(response.res == "TRUE"){
+        window.location.href = '../src/Email_send.svelte'
+    }
+}
