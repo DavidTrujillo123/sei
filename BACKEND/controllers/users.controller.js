@@ -5,24 +5,29 @@ const { db } = require("../config/connection");
 const isUser = async (req, res) => {
     const { us_email, us_password } = req.query;
     try {
-      const response = await db.one(
-        `INSERT INTO comentario(
-            pub_id, aut_id, com_descripcion)
-            VALUES ( $1, $2, $3) RETURNING *;`,
-        [pub_id, aut_id, com_descripcion]
+      const response = await db.oneOrNone(
+        `SELECT * FROM select_users(1)
+        WHERE us_email = $1
+        AND us_password = crypt($2, us_password);`,
+        [us_email, us_password]
       );
-      res.json({
-        message: "Comentario Creado con exito!!",
-        body: {
-          blog: {
-            response,
-          },
-        },
-      });
+      if (response) {
+        res.json({
+          res: "TRUE",
+          us_id: response.us_id,
+          us_nombre: response.us_name,
+          us_email: response.us_email
+        });
+      } else {
+        res.json({
+          res: "FALSE",
+          error: "User not found or incorrect credentials"
+        });
+      }
     } catch (error) {
       res.json({
-        message: "Error  Fatal al crear el Comentario!!",
-        error: { error },
+        res: "FALSE",
+        error: error.message
       });
     }
   };

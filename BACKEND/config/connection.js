@@ -13,6 +13,6 @@ const config= {
 const pgp = pgPromise({});
 const db = pgp(config);
 
-db.any("select * from audit").then((res)=>{console.log(res);})
+db.any("SET timezone = 'America/Guayaquil';").then((res)=>{console.log(res);})
 
 exports.db = db;
