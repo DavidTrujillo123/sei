@@ -33,8 +33,6 @@
 </div>
 
 
-<<<<<<< HEAD
-=======
 <style>
 .container_login {
     font-family: Arial, sans-serif;
@@ -87,4 +85,3 @@ button:hover {
     background-color: #45a049;
 }
 </style>
->>>>>>> e961398d935449a2e79677389e0b51aebf20c356
