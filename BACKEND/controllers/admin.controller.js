@@ -34,7 +34,34 @@ const postUser = async (req, res) => {
   }
 };
 
+const select_users = async (req, res) => {
+  const adm_id  = req.params.adm_id;
+  console.log(adm_id);
+  try {
+    const response = await db.any(
+      `SELECT * FROM select_users($1);`,
+      [adm_id]
+    );
+    if (response) {
+      res.json({
+        response
+      });
+    } else {
+      res.json({
+        res: "Usuarios no encontrados"
+      });
+    }
+  } catch (error) {
+    res.json({
+      res: "ERROR",
+      error: error.message
+    });
+  }
+};
+
+
 
 module.exports = {
-  postUser
+  postUser,
+  select_users
 }
