@@ -1,6 +1,3 @@
-<<<<<<< Updated upstream
-<h1>Enviado correo</h1>
-=======
 <script>
 
 </script>
@@ -68,4 +65,3 @@ input[type="submit"]:hover {
     background-color: #45a049;
 }
 </style>
->>>>>>> Stashed changes
