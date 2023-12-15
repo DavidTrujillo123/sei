@@ -1,12 +1,14 @@
 <script>
   import { login, redirect } from '../controller/login.controller.js';
+  import Error_login from "./Error_login.svelte";
   let obj_data = {
     us_email: '',
     us_password: '',
   }
 
+  let res
   async function doSubmit() {
-    const res = await login(obj_data);
+    res = await login(obj_data);
     redirect(res);
     // console.log(res);
   }
@@ -14,6 +16,11 @@
 
 <div>
   <h1>Inicio</h1>
+  {#if res!=undefined}
+    { #if res.res = "FALSE"}
+    <Error_login/>
+    {/if}
+  {/if}
   <form on:submit|preventDefault={doSubmit}>
     <label for="email">Email:</label>
     <input type="email" id="email" bind:value={obj_data.us_email} />
