@@ -6,7 +6,7 @@
   
 </script>
 
-<main>
+<!-- <main>
   <h1>Seguridad</h1>
   <Router>
 		<nav>
@@ -22,9 +22,74 @@
       <Email_send></Email_send>
 		</Route>
 	</Router>
-</main>
+</main> -->
+
+<body>
+    <header>
+        <h1>Seguridad<span> SEI</span> </h1>
+        <nav>
+            <Router>
+                <div><Link to="/">Formulario</Link></div> 
+				<div><Link to="/login">Login</Link></div>
+				<div><Link to="/perfil">Perfil</Link></div>                
+                
+            </Router>
+        </nav>
+    </header>
+
+    <main>
+        <Router>
+            <Route path="/">
+				<Form></Form>
+				  </Route>
+				  <Route path="/emalsend">
+				<Email_send></Email_send>
+				  </Route>
+        </Router>
+    </main>
+</body>
+
+<style>
 
 
+header {
+    background-color: #050a0e;
+    color: #fff;
+    padding: 10px 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;      
+    border-radius: 30px;     
+
+}
+
+nav {
+    display: flex;
+	
+}
+h1 {
+    display: flex;
+    align-items: center;
+}
+
+h1 span {
+    font-size: 0.8em; /* Ajusta el tamaño de la fuente del span según sea necesario */
+    margin-left: 15px; /* Ajusta el margen según sea necesario */
+	color: #fff;
+ }
+.sveltekit-link  {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    font-size: 16px;
+    margin-right: 20px;
+    transition: color 0.3s;
+}
+
+.sveltekit-link:hover {
+    color: #4caf50;
+}
 
 
+</style>
 
