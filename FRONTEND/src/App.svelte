@@ -1,6 +1,7 @@
 <script>
   import { Router, Link, Route } from "svelte-routing";
   import Form from "./Form.svelte";
+  import Email_send from "./Email_send.svelte";
 
   
 </script>
@@ -17,7 +18,9 @@
 		<Route path="/">
       <Form></Form>
 		</Route>
-		
+		<Route path="/emalsend">
+      <Email_send></Email_send>
+		</Route>
 	</Router>
 </main>
 

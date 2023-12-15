@@ -14,7 +14,7 @@
   }
 </script>
 
-<div>
+<div class="container_login">
   <h1>Inicio</h1>
   {#if res!=undefined}
     { #if res.res = "FALSE"}
@@ -34,7 +34,7 @@
 
 
 <style>
-body {
+.container_login {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
     margin: 0;

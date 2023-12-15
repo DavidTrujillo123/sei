@@ -1,17 +1,19 @@
 <script>
 
 </script>
-
-<h1>Código de Seguridad</h1>
+<div class="container_email ">
+    <h1>Código de Seguridad</h1>
 <form>
     <h2>Código de Verificación</h2>
     <label for="codigo"></label><br/>
     <input id="codigo" type="number"  required >    
     <input type="submit" value="Submit">    
   </form>
+</div>
+
 
 <style>
-body {
+.container_email {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
     margin: 0;

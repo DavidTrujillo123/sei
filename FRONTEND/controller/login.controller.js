@@ -12,8 +12,8 @@ export function redirect(response){
     if(response.res == "TRUE"){
         let user = createUser()
         user.setUser(response)
-        navigate('/', { replace: true })
-        window.location.href = '../src/Email_send.svelte'
+        navigate('/emalsend', { replace: true })
+        
     }
     else{
         
