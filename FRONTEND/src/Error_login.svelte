@@ -1,10 +1,16 @@
 <script>
+  export let flag;
   import Form from "./Form.svelte";
 </script>
 
 <main>
  <div class="contain_error_login">
-     <div class="message_error">Error en el Usuario o en la Contrasenia</div>
+    { #if flag == 1}
+    <div class="message_error">Error en el Usuario o en la Contrasenia</div>
+    {:else}
+    <div class="message_error">Realice el captcha</div>
+    {/if}
+     
    </div>
 </main>
 
