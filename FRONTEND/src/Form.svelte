@@ -3,13 +3,13 @@
   import Error_login from "./Error_login.svelte";
 
   let flag;  
-
+  let res;
   let obj_data = {
     us_email: '',
     us_password: '',
   }
  
-  let res
+  
   async function doSubmit() {
     flag = validateRecaptcha()
     res = await login(obj_data);

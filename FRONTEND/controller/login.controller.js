@@ -14,10 +14,6 @@ export function redirect(response,flag){
         let user = createUser()
         user.setUser(response)
         navigate('/emalsend', { replace: true })
-        
-    }
-    else{
-        window.location.href = '../src/Error_login.svelte'
     }
 }
 
