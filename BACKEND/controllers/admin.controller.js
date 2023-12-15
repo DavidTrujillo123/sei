@@ -36,7 +36,6 @@ const postUser = async (req, res) => {
 
 const select_users = async (req, res) => {
   const adm_id  = req.params.adm_id;
-  console.log(adm_id);
   try {
     const response = await db.any(
       `SELECT * FROM select_users($1);`,
@@ -61,7 +60,6 @@ const select_users = async (req, res) => {
 
 const select_products = async (req, res) => {
   const adm_id  = req.params.adm_id;
-  console.log(adm_id);
   try {
     const response = await db.any(
       `SELECT * FROM select_product($1);`,
@@ -86,7 +84,6 @@ const select_products = async (req, res) => {
 
 const select_roles = async (req, res) => {
   const adm_id  = req.params.adm_id;
-  console.log(adm_id);
   try {
     const response = await db.any(
       `SELECT * FROM select_role($1);`,
@@ -111,11 +108,35 @@ const select_roles = async (req, res) => {
 
 const select_shopping_order = async (req, res) => {
   const adm_id  = req.params.adm_id;
-  console.log(adm_id);
   try {
     const response = await db.any(
       `SELECT * FROM select_shopping_order($1);`,
       [adm_id]
+    );
+    if (response) {
+      res.json({
+        response
+      });
+    } else {
+      res.json({
+        res: "Ordenes no encontradas"
+      });
+    }
+  } catch (error) {
+    res.json({
+      res: "ERROR",
+      error: error.message
+    });
+  }
+};
+
+const select_det_shopping_order = async (req, res) => {
+  const adm_id  = req.params.adm_id;
+  const ord_id =  req.query.ord_id;
+  try {
+    const response = await db.any(
+      `SELECT * FROM select_det_shopping_order($1,$2);`,
+      [adm_id,ord_id]
     );
     if (response) {
       res.json({
@@ -141,5 +162,6 @@ module.exports = {
   select_users,
   select_products,
   select_roles,
-  select_shopping_order
+  select_shopping_order,
+  select_det_shopping_order
 }

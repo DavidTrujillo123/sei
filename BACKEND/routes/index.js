@@ -4,7 +4,8 @@ const {postUser,
     select_users,
 select_products,
 select_roles,
-select_shopping_order} = require('../controllers/admin.controller');
+select_shopping_order,
+select_det_shopping_order} = require('../controllers/admin.controller');
 const {getProducts} = require('../controllers/general.controller');
 
 const {
@@ -22,5 +23,6 @@ router.get('/selectUsers/:adm_id',select_users);
 router.get('/selectProducts/:adm_id',select_products);
 router.get('/selectRoles/:adm_id',select_roles);
 router.get('/selectOrders/:adm_id',select_shopping_order);
+router.post('/selectdetOrders/:adm_id',select_det_shopping_order);
 
 module.exports = router;
