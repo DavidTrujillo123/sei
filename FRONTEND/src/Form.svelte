@@ -1,32 +1,41 @@
 <script>
-  import { login, redirect } from '../controller/login.controller.js';
+  import { login, redirect, validateRecaptcha } from '../controller/login.controller.js';
   import Error_login from "./Error_login.svelte";
+
+  let flag;  
+
   let obj_data = {
     us_email: '',
     us_password: '',
   }
-
+ 
   let res
   async function doSubmit() {
+    flag = validateRecaptcha()
     res = await login(obj_data);
-    redirect(res);
-    // console.log(res);
+    redirect(res,flag);
   }
 </script>
 
 <div class="container_login">
   <h1>Inicio</h1>
+
   {#if res!=undefined}
-    { #if res.res = "FALSE"}
-    <Error_login/>
+    {#if flag == true}
+      { #if res.res = "FALSE"}
+        <Error_login flag = 1/>
+      {/if}
+    {:else}
+      <Error_login flag = 2/>
     {/if}
   {/if}
   <h1>Login</h1>
-  <form on:submit|preventDefault={doSubmit}>
+  <form on:submit|preventDefault={ doSubmit}>
     <label for="email">Email:</label>
-    <input type="email" id="email" bind:value={obj_data.us_email} />
+    <input type="email" id="email" bind:value={obj_data.us_email} required/>
     <label for="password">Password:</label>
-    <input type="password" id="password" bind:value={obj_data.us_password} />
+    <input type="password" id="password" bind:value={obj_data.us_password} required />
+    <div class="g-recaptcha" data-sitekey="6LcGyjApAAAAAH5ysd4UFBjdsxH60jPpy4GmKl0o"></div>
     <button type="submit">Enviar</button>
   </form>
 
