@@ -11,6 +11,6 @@ export function redirect(response){
         window.location.href = '../src/Email_send.svelte'
     }
     else{
-        
+        window.location.href = '../src/Error_login.svelte'
     }
 }
