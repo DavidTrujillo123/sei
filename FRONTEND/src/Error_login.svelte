@@ -6,14 +6,7 @@
  <div class="contain_error_login">
      <div class="message_error">Error en el Usuario o en la Contrasenia</div>
    </div>
-   
-   <h1>error</h1>
-   
-   <Form />
-
 </main>
-
-
 
 
 <style>
