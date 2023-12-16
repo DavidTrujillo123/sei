@@ -7,7 +7,7 @@
   import Admin_Users from "./views/Admin_Users.svelte";
   import Admin from "./views/Admin.svelte";
   import User_Form from "./views/User_Form.svelte";
-
+  import Table from "./views/Table.svelte";
   
 </script>
 

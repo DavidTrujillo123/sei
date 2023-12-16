@@ -1,62 +1,28 @@
 <script>
-    import { getUsers } from '../../controller/selectUser.controller';
-    import { onMount } from "svelte";
-    import { getSession } from '../../Model/Session.js';
-    import NavBar from "./NavBar.svelte";   
-    import Table from "./Table.svelte";    
+    // import { getUsers } from '../../controller/selectUser.controller';
+    import { onMount } from 'svelte';
+    export let dataObj;
+    export let rows_name;
+    export let rows_data;
+    export let name_componented;
     import { navigate } from 'svelte-routing';
-  
-    function irAVista2() {
-      navigate('/User_Form');
-    }
-    const storedUser = getSession("user");
-    let params = storedUser.user.us_id;
-    let res = []
-    let data1 = [];
-    let e = null;
-    async function getDataUsers() {
-      res = await getUsers();
-      data1 = res.response
-    }
-    onMount(() => {
-      getDataUsers();
-    });
 
-    let  cat = [
-        "Usuarios",
-        "Producto",
-        "Categorias Producto",
-        "Rol",
-        "Carrito de Compras",
-        "Detalle Carrito de Compras",
-    ];
     
-    let  filas = [
-      "Rol ID",
-      "User ID",
-      "Name User",
-      "SurName",
-      "Email",
-      "Password", 
-      "Acciones" 
-    ];
+    export const delete_data = () =>{
+        if(name_componented == 'Admin_Users'){
 
-    let obj_par = [
-      'rol_id',
-      'us_id',
-      'us_name',
-      'us_surname',
-      'us_email',
-      'us_password'
-    ]
+        }
+    }
+
+    export const edit_data = () =>{
+         if(name_componented == 'Admin_Users'){
+            navigate('/User_Form');
+        }
+    }
+
   </script>
-  <NavBar tablas={cat}/>
-  
-  <!-- {#if data1 != []} -->
-  <Table dataObj={data1}  rows_name={filas} rows_data={obj_par} name_componented={'Admin_Users'} />
-  <!-- {/if} -->
 
-  <!-- <main>
+  <main>
     <div class="header-container">
       <h3>Tabla de Usuarios</h3>
       <button class="new-user-button">Nuevo Usuario</button>
@@ -64,17 +30,13 @@
       <table class="table_users">
           <thead>
               <tr>
-              <th>Rol ID</th>
-              <th>User ID</th>
-              <th>Name User</th>
-              <th>SurName</th>
-              <th>Email</th>
-              <th>Password</th> 
-              <th>Acciones</th>             
+                {#each rows_name as category (category)}
+                    <th>{category}</th>
+                {/each}
               </tr>
           </thead>
           <tbody>
-              {#if data1.length == 0}
+              {#if dataObj.length == 0}
               <tr>
                   <th>Cargando...</th>
                   <th />
@@ -82,17 +44,15 @@
                   <th />
               </tr>
               {:else}
-              {#each data1 as data}
+              {#each dataObj as data}
+
                   <tr>
-                  <td>{data.rol_id}</td>
-                  <td>{data.us_id}</td>
-                  <td>{data.us_name}</td>
-                  <td>{data.us_surname}</td>
-                  <td>{data.us_email}</td>
-                  <td>{data.us_password}</td>
+                     {#each rows_data as category (category)}
+                         <td>{data[category]}</td>
+                    {/each}
                   <td>
-                    <button on:click={irAVista2} >Editar</button>
-                    <button class="delete">Eliminar</button>
+                    <button on:click={edit_data} >Editar</button>
+                    <button on:click={delete_data} class="delete">Eliminar</button>
                   </td>
                   </tr>
               {/each}
@@ -101,9 +61,9 @@
           </table>
           
   
-  </main> -->
+  </main>
   
-  <!-- <style>
+  <style>
   
   *, *:before, *:after {
     margin: 0;
@@ -182,4 +142,4 @@ button.delete:hover {
     background-color: #d32f2f;
 }  
   
-  </style> -->
+  </style>
