@@ -1,8 +1,10 @@
 import Login from '../Model/Login.mjs';
+import SMTP from '../Model/SMTP.mjs';
 import { writable } from 'svelte/store'
 import {  Link, navigate } from "svelte-routing";
 
-
+let code;
+export let user;
 export async function login(obj_data) {
     const user = new Login();
     let response = await user.isUser(obj_data);
@@ -11,8 +13,13 @@ export async function login(obj_data) {
 
 export function redirect(response,flag){
     if(response.res == "TRUE" && flag){
-        let user = createUser()
-        user.setUser(response)
+        code = generateVerificationCode()
+        user = createUser()
+        user.setUser(response, code)
+        const smtp = new SMTP();
+        smtp.sendVerificationEmail(response.us_email,  code, response.us_nombre)
+
+
         navigate('/emalsend', { replace: true })
     }
 }
@@ -23,10 +30,14 @@ const createUser = () => {
 
     return {
         subscribe,
-        setUser: (user) => {
-            set(user)
+        setUser: (user, code) => {
+            set({user, code}) 
         }
     }
+}
+
+const generateVerificationCode = () =>{
+    return Math.floor(100000 + Math.random() * 900000).toString();
 }
 
 export function validateRecaptcha() {
