@@ -2,6 +2,7 @@
   import { Router, Link, Route } from "svelte-routing";
   import Form from "./Form.svelte";
   import Email_send from "./Email_send.svelte";
+  import Page from "./Page.svelte";
 
   
 </script>
@@ -16,10 +17,13 @@
 		</nav>
 
 		<Route path="/">
-      <Form></Form>
+      		<Form></Form>
 		</Route>
 		<Route path="/emalsend">
-      <Email_send></Email_send>
+      		<Email_send></Email_send>
+	  	</Route>
+		<Route path="/page">
+			<Page></Page>
 		</Route>
 	</Router>
 </main>

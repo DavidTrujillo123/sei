@@ -9,7 +9,6 @@
     us_password: '',
   }
  
-  
   async function doSubmit() {
     flag = validateRecaptcha()
     res = await login(obj_data);

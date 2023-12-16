@@ -1,16 +1,23 @@
 <script>
-
+    import {isVerifiedEmail} from "../controller/smtp.controller.js"
+    let codigo = ""
+    const doSubmit = () =>{
+        if(codigo.trim()){
+            console.log("entro if")
+            isVerifiedEmail(codigo)
+        }
+    }
 </script>
+
 <div class="container_email ">
     <h1>Código de Seguridad</h1>
-<form>
-    <h2>Código de Verificación</h2>
-    <label for="codigo"></label><br/>
-    <input id="codigo" type="number"  required >    
-    <input type="submit" value="Submit">    
-  </form>
+    <form on:submit|preventDefault={doSubmit}>
+        <h2>Código de Verificación</h2>
+        <label for="codigo"></label><br/>
+        <input id="codigo" type="text" bind:value={codigo} required >    
+        <input type="submit" value="Submit">    
+    </form>
 </div>
-
 
 <style>
 .container_email {
@@ -44,7 +51,7 @@ label {
     color: #555;
 }
 
-input[type="number"] {
+input[type="text"] {
     width: 100%;
     padding: 10px;
     margin-bottom: 15px;
