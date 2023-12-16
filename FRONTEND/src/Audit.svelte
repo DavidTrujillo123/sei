@@ -1,15 +1,20 @@
 <script>
   import {audit} from '../controller/audit.controller';
   import { onMount } from "svelte";
+
   let params = 1
+  console.log(params);
   let res = []
+  let data1 = []
   async function getDataAudit() {
     res = await audit(params);
+    data1 = res.response
     console.log(res.response);
   }
   onMount(() => {
     getDataAudit();
   });
+  
 </script>
 
 <main>
@@ -18,16 +23,16 @@
     <table class="table_audit">
         <thead>
             <tr>
-            <th>Cedula</th>
-            <th>Nombre</th>
-            <th>Direccion</th>
-            <th>Telefono</th>
-            <th>Correo Electronico</th>
-            <th>Acciones</th>
+            <th>Auditor ID</th>
+            <th>Usuario ID</th>
+            <th>Tabla</th>
+            <th>Accion</th>
+            <th>Regitro ID</th>
+            <th>Fecha de Accion</th>
             </tr>
         </thead>
         <tbody>
-            {#if res.length == 0}
+            {#if data1.length == 0}
             <tr>
                 <th>Cargando...</th>
                 <th />
@@ -35,7 +40,7 @@
                 <th />
             </tr>
             {:else}
-            {#each res.response as data}
+            {#each data1 as data}
                 <tr>
                 <td>{data.au_id}</td>
                 <td>{data.us_id}</td>
@@ -61,10 +66,7 @@
 }
 
 
-body {
-  background: #105469;
-  font-family: 'Open Sans', sans-serif;
-}
+
 table {
   background: #012B39;
   border-radius: 0.25em;
@@ -84,9 +86,7 @@ td {
   font-weight: 400;
   padding: 0.65em 1em;
 }
-.disabled td {
-  color: #4F5F64;
-}
+
 tbody tr {
   transition: background 0.25s ease;
 }
