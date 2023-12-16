@@ -162,7 +162,7 @@ const insert_category_product = async (req, res) => {
   const { cat_name_p, id_aut } = req.query;
   try {
     const response = await db.any(
-      `CALL public.insert_category_product($1,$2)`,
+      `CALL public.insert_category_product($1,true,$2)`,
       [cat_name_p, id_aut]
     );
     res.json({
@@ -177,11 +177,11 @@ const insert_category_product = async (req, res) => {
 };
 
 const insert_det_shopping_order = async (req, res) => {
-  const { so_id_p, pro_id_p, det_quantity_p, det_price_p, us_id_created } = req.query;
+  const { so_id_p, pro_id_p, det_quantity_p, us_id_created } = req.query;
   try {
     const response = await db.any(
-      `CALL public.insert_det_shopping_order($1,$2,$3,$4,$5)`,
-      [so_id_p, pro_id_p, det_quantity_p, det_price_p, us_id_created]
+      `CALL public.insert_det_shopping_order($1,$2,$3,true,$4)`,
+      [so_id_p, pro_id_p, det_quantity_p, us_id_created]
     );
     res.json({
       res: "Detalle creada con exito"
