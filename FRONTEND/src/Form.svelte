@@ -17,7 +17,7 @@
 </script>
 
 <div class="container_login">
-  <h1>Inicio</h1>
+  
 
   {#if res!=undefined}
     {#if flag == true}
