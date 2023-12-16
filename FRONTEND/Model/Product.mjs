@@ -7,4 +7,11 @@ export default class Product {
         const response = await conn.getData(urlApi, obj_data);
         return response;
     }
+    async postProduct(obj_data){
+        const urlApi = 'http://localhost:3000/selectProducts';
+        const conn = new Conexion;
+        const response = await conn.getData(urlApi, obj_data);
+        return response;
+    }
+
 }
