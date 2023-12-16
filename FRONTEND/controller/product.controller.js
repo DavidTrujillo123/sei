@@ -9,11 +9,11 @@ async function getProductQuery(obj_data) {
     return result;
 }
 
-export function getProduct() {
-    let obj_data = unsubscribe;
-    return getProductQuery(obj_data);
-}
+// export function getProduct() {
+//     let obj_data = unsubscribe;
+//     return getProductQuery(obj_data);
+// }
 
-const unsubscribe = user.subscribe(value => {
-    return value;
-});
+// const unsubscribe = user.subscribe(value => {
+//     return value;
+// });
