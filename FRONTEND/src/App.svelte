@@ -33,10 +33,9 @@
         <h1>Seguridad<span> SEI</span> </h1>
         <nav>
             <Router>
-                <div><Link to="/">Formulario</Link></div> 
-				<div><Link to="/login">Login</Link></div>
-				<div><Link to="/perfil">Perfil</Link></div>                
-                
+                <div class="link"><Link to="/">Formulario</Link></div> 
+				<div class="link"><Link to="/login">Login</Link></div>
+				<div class="link"><Link to="/perfil">Perfil</Link></div>                
             </Router>
         </nav>
     </header>
@@ -46,9 +45,12 @@
             <Route path="/">
 				<Form></Form>
 				  </Route>
-				  <Route path="/emalsend">
+			<Route path="/emalsend">
 				<Email_send></Email_send>
-				  </Route>
+			</Route>
+            <Route path="/page">
+                <Page></Page>
+            </Route>
         </Router>
     </main>
 </body>
@@ -74,6 +76,13 @@ nav {
 h1 {
     display: flex;
     align-items: center;
+}
+
+.link {
+    padding: 10px;
+    background-color: white;
+    border-radius: 5px;
+    margin-left: 5px;
 }
 
 h1 span {
