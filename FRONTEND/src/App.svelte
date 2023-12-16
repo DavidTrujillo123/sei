@@ -94,7 +94,7 @@ h1 span {
     margin-left: 15px; /* Ajusta el margen según sea necesario */
 	color: #fff;
  }
-.sveltekit-link  {
+/* .sveltekit-link  {
     text-decoration: none;
     color: #fff;
     font-weight: bold;
@@ -105,7 +105,7 @@ h1 span {
 
 .sveltekit-link:hover {
     color: #4caf50;
-}
+} */
 
 
 </style>

@@ -1,18 +1,20 @@
 <script>
-    // import { getProduct } from '../controller/product.controller';
-    // import {user} from '../controller/login.controller';
-
-    // const products = () =>{
-    //     const unsubscribe = user.subscribe(value => {
-    //         let data = value;
-    //         getProduct(data.user.id) 
-    //     });
-    // }
-
+    import { getProduct } from "../controller/product.controller";
+    import { onMount } from "svelte";
+    let query = [];
+    let data = []
+    const products = async () => {
+        query = await getProduct();
+        data = query.response;
+    };
+    
+    onMount(() => {
+        products();
+    });
+    
 </script>
 
-
-<section class="main container">
+<!-- <section class="main container">
     <div class="cards-container">
         <div class="product-card">
             <img src="https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="">
@@ -57,6 +59,30 @@
             </div>
         </div>
     </div>   
+</section> -->
+<section class="main container">
+    <div class="cards-container">
+        {#if data != [] && data!= undefined }
+            <!-- {console.log(data)} -->
+            {#each data as product}
+                <div class="product-card">
+                    <img src={product.pro_img} alt={product.pro_name} />
+                    <div class="product-info">
+                        <div>
+                            <p>${product.pro_price.toFixed(2)}</p>
+                            <p>{product.pro_name}</p>
+                        </div>
+                        <figure>
+                            <img
+                                src="../public/resource/bt_add_to_cart.svg"
+                                alt="products"
+                            />
+                        </figure>
+                    </div>
+                </div>
+            {/each}
+        {/if}
+    </div>
 </section>
 
 <style>

@@ -1,23 +1,21 @@
 <script>
   import {audit} from '../controller/audit.controller';
   import { onMount } from "svelte";
-  import { getSession, setSession } from '../Model/Session.js';
+  import { getSession } from '../Model/Session.js';
 
 
-  const storedUser = getSession("user")
-  
-  console.log(storedUser);
+  const storedUser = getSession("user");
   let params = storedUser.user.us_id;
   let res = []
   let data1 = []
   async function getDataAudit() {
     res = await audit(params);
     data1 = res.response
-    console.log(res.response);
   }
   onMount(() => {
     getDataAudit();
   });
+  
 </script>
 
 <main>
