@@ -1,7 +1,28 @@
 <script>
+    import { getSession } from '../../Model/Session.js';
+    import Menu from "./Menu.svelte";
+    import ShopingCart from './Shoping_cart.svelte';
+    
+    let data = getSession('user');
+
+    let flag_menu = false;
+    let flag_shopping_cart = false;
+    const doClickMenu = () =>{
+        if(flag_menu == true)
+            flag_menu = false;
+        else
+            flag_menu = true;
+    }
+
+    const doClickShoppingCart = () =>{
+        if(flag_shopping_cart == true)
+            flag_shopping_cart = false;
+        else
+            flag_shopping_cart = true;
+    }
+
 
 </script>
-
 
 <nav>
     <img src="../public/resource/iconos/icon_menu.svg" alt="menu" class="menu">
@@ -11,24 +32,31 @@
         <ul>
             <li><a href="/audit">All</a></li>
             <li><a href="/">Clothes</a></li>
-            <li><a href="">Electronics</a></li>
-            <li><a href="">Furnitures</a></li>
-            <li><a href="">Toys</a></li>
-            <li><a href="">Others</a></li>
+            <li><a href="/">Electronics</a></li>
+            <li><a href="/">Furnitures</a></li>
+            <li><a href="/">Toys</a></li>
+            <li><a href="/">Others</a></li>
         </ul>
 
     </div>
     <div class="navbar-right">
         <ul>
-            <li class="navbar-email">platzi@example.com
-                <img src="../public/resource/iconos/flechita.svg" alt="arrow">
+            <li class="navbar-email">{data.user.us_email}
+                <img src="../public/resource/iconos/flechita.svg" alt="arrow" on:click={doClickMenu}>
             </li>
-            <li class="navbar-shopping-cart">
+            <li class="navbar-shopping-cart" on:click={doClickShoppingCart}>
                 <img 
                     src="../public/resource/iconos/icon_shopping_cart.svg" 
-                    alt="shopping-car">
+                    alt="shopping-car"
+                >
                 <div>2</div>
             </li>
+            {#if flag_menu}
+                <Menu/>
+            {/if}
+            {#if flag_shopping_cart}
+                <ShopingCart/>
+            {/if}
         </ul>
     </div>
 </nav>
@@ -36,16 +64,6 @@
 
 
 <style>
-    :root{
-            --white: #FFFFFF;
-            --black: #000000;
-            --very-light-pink: #c7c7c7;
-            --text-input-field: #f7f7f7;
-            --hospital-green: #ACD9B2;
-            --sm: 14px;
-            --md: 16px;
-            --lg: 18px;
-    }
     nav{
         display: flex;
         justify-content: space-between;

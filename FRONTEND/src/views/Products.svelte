@@ -2,10 +2,12 @@
     import { getProduct } from "../../controller/product.controller";
     import { onMount } from "svelte";
     import NavBar from "./NavBar.svelte";
-    // import { Router, Link, Route } from "svelte-routing";
+    import ProductDetail from "./Product_detail.svelte";
 
     let query = [];
-    let data = []
+    let data = [];
+    let productoSeleccionado = null;
+
     const products = async () => {
         query = await getProduct();
         data = query.response;
@@ -15,16 +17,22 @@
         products();
     });
     
+    export const isClicked = (product) => {
+        if (productoSeleccionado != null) {
+            productoSeleccionado = null;
+        } else {
+            productoSeleccionado = product;
+        }
+    }
 </script>
 
 <NavBar />
 <section class="main container">
     <div class="cards-container">
-        {#if data != [] && data!= undefined }
-            <!-- {console.log(data)} -->
+        {#if data != [] && data != undefined }
             {#each data as product}
-                <div class="product-card">
-                    <img src={product.pro_img} alt={product.pro_name} />
+                <div on:click={() => isClicked(product)} class="product-card">
+                    <img src={product.pro_img} alt={product.pro_name}/>
                     <div class="product-info">
                         <div>
                             <p>${product.pro_price.toFixed(2)}</p>
@@ -39,25 +47,16 @@
                     </div>
                 </div>
             {/each}
+            
+            {#if productoSeleccionado !== null}
+                <ProductDetail det_pro={productoSeleccionado}/>
+            {/if}
         {/if}
     </div>
 </section>
 
+
 <style>
-    :root {
-        --white: #ffffff;
-        --black: #000000;
-        --very-light-pink: #c7c7c7;
-        --text-input-field: #f7f7f7;
-        --hospital-green: #acd9b2;
-        --sm: 14px;
-        --md: 16px;
-        --lg: 18px;
-    }
-    /* body {
-        font-family: "Quicksand", sans-serif;
-        margin: 0;
-    } */
     .cards-container {
         --card-size: 240px;
         display: grid;

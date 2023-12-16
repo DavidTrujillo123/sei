@@ -134,8 +134,9 @@ const select_shopping_order = async (req, res) => {
 };
 
 const select_det_shopping_order = async (req, res) => {
-  const adm_id = req.params.adm_id;
-  const ord_id = req.query.ord_id;
+  const {
+    adm_id, ord_id
+  } = req.query;
   try {
     const response = await db.any(
       `SELECT * FROM select_det_shopping_order($1,$2);`,

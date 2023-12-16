@@ -17,7 +17,7 @@
 
 <style>
 .message_error {
- font-size: 20px;
+ font-size: 15px;
  font-weight: 700;
  color: #e8eaee;
  text-align: center;
@@ -29,5 +29,6 @@
  padding: 20px;
  margin-left: 20%;
  margin-right: 20%;
+ border-radius: 20px;
 }
 </style>

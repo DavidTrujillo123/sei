@@ -32,7 +32,7 @@ router.get('/selectCategoriesProducts/:adm_id',select_cat_pro);
 router.get('/selectRoles/:adm_id',select_roles);
 router.get('/selectAudit/:adm_id',select_audit);
 router.get('/selectOrders/:adm_id',select_shopping_order);
-router.post('/selectdetOrders/:adm_id',select_det_shopping_order);
+router.post('/selectdetOrders/',select_det_shopping_order);
 
 
 router.post('/insertUser',insert_user);

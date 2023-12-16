@@ -30,7 +30,7 @@
 </main> -->
 
 <body>
-    <header>
+    <!-- <header> -->
         <!-- <h1>Seguridad<span> SEI</span> </h1> -->
         <!-- <nav>
             <Router>
@@ -39,7 +39,7 @@
 				<div class="link"><Link to="/perfil">Perfil</Link></div>                
             </Router>
         </nav> -->
-    </header>
+    <!-- </header> -->
 
     <main>
         <Router>
@@ -62,7 +62,7 @@
 <style>
 
 
-header {
+/* header {
     background-color: #050a0e;
     color: #fff;
     padding: 10px 10px;
@@ -87,7 +87,7 @@ h1 {
     background-color: white;
     border-radius: 5px;
     margin-left: 5px;
-}
+} */
 
 /*h1 span {
     font-size: 0.8em; 

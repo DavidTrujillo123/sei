@@ -1,4 +1,4 @@
-// import './app.css'
+import './app.css'
 // @ts-ignore
 import App from './App.svelte';
 // import Error from './Error_login.svelte';
