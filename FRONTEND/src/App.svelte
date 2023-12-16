@@ -6,6 +6,7 @@
   import Audit from "./views/Audit.svelte";
   import Admin_Users from "./views/Admin_Users.svelte";
   import Admin from "./views/Admin.svelte";
+  import User_Form from "./views/User_Form.svelte";
 
   
 </script>
@@ -62,6 +63,9 @@
             </Route>
             <Route path="/admin">
                 <Admin></Admin>
+            </Route>
+            <Route path="/User_Form">
+                <User_Form></User_Form>
             </Route>
         </Router>
     </main>
