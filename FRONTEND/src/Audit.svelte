@@ -2,14 +2,12 @@
   import {audit} from '../controller/audit.controller';
   import { onMount } from "svelte";
   let params = 1
-  let res = []
+  let res;
   async function getDataAudit() {
     res = await audit(params);
     console.log(res.response);
   }
-  onMount(() => {
-    getDataAudit();
-  });
+  getDataAudit();
 </script>
 
 <main>

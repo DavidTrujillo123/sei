@@ -1,0 +1,396 @@
+[33mcommit e34d8bf1366eca02ff18166d3a5c7cedbb6b9ec5[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Merge: bd98c20 c35c9bf
+Author: David Trujillo <davot098@gmail.com>
+Date:   Fri Dec 15 22:32:37 2023 -0500
+
+    Merge branch 'main' of github.com:DavidTrujillo123/sei
+
+[33mcommit bd98c2083acc0375daa0b9d758413233fb4b1133[m
+Author: David Trujillo <davot098@gmail.com>
+Date:   Fri Dec 15 22:31:47 2023 -0500
+
+    Add products view
+
+[33mcommit c35c9bf9e685f566e63b0b24f19645bfb27a6058[m
+Author: Cristian Castro <cristian181996@gmail.com>
+Date:   Fri Dec 15 22:30:45 2023 -0500
+
+    Table_Audit
+
+[33mcommit f4e1b2a0326a2cda544395f619a7862cd50d2f4e[m
+Author: Jordi7-7 <jordi.cahuas20@gmail.com>
+Date:   Fri Dec 15 21:30:00 2023 -0500
+
+    BACKEND select_audit
+
+[33mcommit 6b5a09655a41d0319b45a11ee093d72b7f0552c1[m
+Author: David Trujillo <davot098@gmail.com>
+Date:   Fri Dec 15 19:44:20 2023 -0500
+
+    Improvement Modeles with a Class Conexion.mjs
+
+[33mcommit 24d0d7a9118f1c1d28e895030b72423ae5e733a4[m
+Merge: 40fa42f dd32d9c
+Author: David Trujillo <davot098@gmail.com>
+Date:   Fri Dec 15 19:10:21 2023 -0500
+
+    Merge branch 'main' of github.com:DavidTrujillo123/sei
+
+[33mcommit dd32d9c9371289825afcf35d7170792f9f5a16c9[m
+Merge: 34db13a a47848f
+Author: Cristian Castro <cristian181996@gmail.com>
+Date:   Fri Dec 15 19:08:45 2023 -0500
+
+    Merge branch 'main' of https://github.com/DavidTrujillo123/sei
+
+[33mcommit 34db13a7160baaa406f2f42dc2adcd50b088148c[m
+Author: Cristian Castro <cristian181996@gmail.com>
+Date:   Fri Dec 15 19:08:25 2023 -0500
+
+    EmailSend
+
+[33mcommit 40fa42fc66fb4a1393540c15af0e2c6844132518[m
+Author: David Trujillo <davot098@gmail.com>
+Date:   Fri Dec 15 17:56:18 2023 -0500
+
+    Fix bugs
+
+[33mcommit a47848f2d82eabe213782ea56d82d4c3c315c844[m
+Author: AngeloVaca <102611194+AngeloVaca@users.noreply.github.com>
+Date:   Fri Dec 15 17:29:04 2023 -0500
+
+    Navbar
+
+[33mcommit e58e8b3c2305e3f5ff5de47dc089e7af860a2ec7[m
+Author: Jordi7-7 <jordi.cahuas20@gmail.com>
+Date:   Fri Dec 15 17:14:20 2023 -0500
+
+     BACKEND inserts admin
+
+[33mcommit 3bcef2a7d2618d601455d3e651a3ccff9bc7fd2d[m
+Author: David Trujillo <davot098@gmail.com>
+Date:   Fri Dec 15 16:11:07 2023 -0500
+
+    Fix bugs
+
+[33mcommit a58fa960d08ada604d3a2845df56c05b2fead862[m
+Merge: a9974fc b53af64
+Author: Cristian Castro <cristian181996@gmail.com>
+Date:   Fri Dec 15 15:47:48 2023 -0500
+
+    Merge branch 'cristian_test'
+
+[33mcommit b53af64f30a71bdae9ab4d7feedec02024de4720[m
+Author: Cristian Castro <cristian181996@gmail.com>
+Date:   Fri Dec 15 15:47:18 2023 -0500
+
+    recpatcha
+
+[33mcommit a9974fc004b3b897845939b653fde4eb4c8fdefd[m
+Author: Jordi7-7 <jordi.cahuas20@gmail.com>
+Date:   Fri Dec 15 15:18:20 2023 -0500
+
+    BACKEND selec det order
+
+[33mcommit bdb2368ce928a42380e80a4f9c86f4c29d02411b[m
+Author: Jordi7-7 <jordi.cahuas20@gmail.com>
+Date:   Fri Dec 15 14:47:31 2023 -0500
+
+    BACKEND select administradores
+
+[33mcommit 00d23fd5c4b72a8033dddcdda4649c5217615d9e[m
+Author: Jordi7-7 <jordi.cahuas20@gmail.com>
+Date:   Fri Dec 15 14:36:12 2023 -0500
+
+    backend select_users
+
+[33mcommit 183e5c4aa8da05183e38ccb20b565d1ab8266f06[m
+Author: David Trujillo <davot098@gmail.com>
+Date:   Fri Dec 15 13:43:21 2023 -0500
+
+    Created  general.control.js
+
+[33mcommit 8594023d4616a6aef485b5bfb066943ed8520a78[m
+Merge: e0ad5b6 e961398
+Author: David Trujillo <davot098@gmail.com>
+Date:   Fri Dec 15 11:27:28 2023 -0500
+
+    Merge branch 'main' of github.com:DavidTrujillo123/sei
+
+[33mcommit e961398d935449a2e79677389e0b51aebf20c356[m
+Author: Cristian Castro <cristian181996@gmail.com>
+Date:   Fri Dec 15 11:21:28 2023 -0500
+
+    Firts parts Login
+
+[33mcommit 4417d6d6a3be810460f6d7a35c0a60e52574b1ed[m
+Merge: 598ee46 357fb5f
+Author: Cristian Castro <cristian181996@gmail.com>
+Date:   Fri Dec 15 11:13:56 2023 -0500
+
+    Merge branch 'main' of https://github.com/DavidTrujillo123/sei
+
+[33mcommit 598ee46df99a48f325c50aeba841f232d739cca8[m
+Author: Cristian Castro <cristian181996@gmail.com>
+Date:   Fri Dec 15 11:12:38 2023 -0500
+
+    Fix Form
+
+[33mcommit 357fb5f9fafff42f7a44a690e05841f7eda0a1c7[m
+Author: AngeloVaca <102611194+AngeloVaca@users.noreply.github.com>
+Date:   Fri Dec 15 10:09:13 2023 -0500
+
+    Style Login
+
+[33mcommit e0ad5b6a983919a4ef8a131c9525518072cbdbe9[m
+Merge: 319c323 c7f28cf
+Author: David Trujillo <davot098@gmail.com>
+Date:   Fri Dec 15 10:04:14 2023 -0500
+
+    Merge branch 'main' of github.com:DavidTrujillo123/sei
+
+[33mcommit 319c3238188417a81389d6878315aa8e3909b192[m
+Author: David Trujillo <davot098@gmail.com>
+Date:   Fri Dec 15 10:02:24 2023 -0500
+
+    Try sync windows
+
+[33mcommit c7f28cf1b5ec5eff02d31ad700c8a2928b22f3a7[m
+Author: Cristian Castro <cristian181996@gmail.com>
+Date:   Fri Dec 15 09:39:57 2023 -0500
+
+    Update Error
+
+[33mcommit 27d5d0e4f68df1a06de509d357ffa44fcdf9ff58[m
+Author: AngeloVaca <102611194+AngeloVaca@users.noreply.github.com>
+Date:   Fri Dec 15 09:39:23 2023 -0500
+
+    Email_Send
+
+[33mcommit dbdad6f5132e353db1d7177bab33154f5e04eb10[m
+Author: AngeloVaca <102611194+AngeloVaca@users.noreply.github.com>
+Date:   Fri Dec 15 09:37:22 2023 -0500
+
+    Email_Send
+
+[33mcommit fd133e8c4a0f9b3d84a464128a557cf0918f3e16[m
+Author: David Trujillo <davot098@gmail.com>
+Date:   Thu Dec 14 09:12:46 2023 -0500
+
+    Fix bugs
+
+[33mcommit 5589e8db190f150a42e9579be4ee22c3d272d7a8[m
+Author: David Trujillo <davot098@gmail.com>
+Date:   Thu Dec 14 01:45:16 2023 -0500
+
+    Fix bugs and rebuilt Form.svelte with MVC
+
+[33mcommit 551b5d1b2cf39bd22270f105f70b30b0c6fff58e[m
+Author: David Trujillo <davot098@gmail.com>
+Date:   Thu Dec 14 00:42:53 2023 -0500
+
+    Init frontend From login
+
+[33mcommit 8f27cdd802d8ded51a69334afc5e303f60d9ed13[m
+Author: David Trujillo <davot098@gmail.com>
+Date:   Wed Dec 13 23:02:09 2023 -0500
+
+    firt commit front
+
+[33mcommit e7dc857766912c1e2be27ad98a2b943b547143cd[m
+Author: David Trujillo <davot098@gmail.com>
+Date:   Wed Dec 13 22:41:46 2023 -0500
+
+    Change framework to svelte
+
+[33mcommit 20f4dda9d68d805d3d449f5d649cbe82e0e4f197[m
+Author: CristianKenedy <cristian181996@gmail.com>
+Date:   Wed Dec 13 22:06:58 2023 -0500
+
+    reCaptcha
+
+[33mcommit 8daf3c34d8f7c58b48abe7ced4d3ed4ad777933d[m
+Author: CristianKenedy <cristian181996@gmail.com>
+Date:   Wed Dec 13 19:44:33 2023 -0500
+
+    Chapta
+
+[33mcommit a3f4a59cb5f6904d9f5f9d18c4645a0faba85bfe[m
+Author: David Trujillo <davot098@gmail.com>
+Date:   Wed Dec 13 19:40:33 2023 -0500
+
+    Fix bugs
+
+[33mcommit c1ff6e63d4fbf17d54edd131b579b6c984d9e7f3[m
+Merge: c0823f4 fbf9443
+Author: David Trujillo <davot098@gmail.com>
+Date:   Wed Dec 13 19:36:05 2023 -0500
+
+    Merge branch 'main' of github.com:DavidTrujillo123/sei
+
+[33mcommit c0823f4c37feacd995e2a4e736695f0c0ff33797[m
+Author: David Trujillo <davot098@gmail.com>
+Date:   Wed Dec 13 19:35:12 2023 -0500
+
+    Add function admin.controller
+
+[33mcommit fbf944382acd6d1be3485bd8cc6d79c4e92a1235[m
+Author: Jordi7-7 <jordi.cahuas20@gmail.com>
+Date:   Wed Dec 13 19:33:41 2023 -0500
+
+    function BACKEND login
+
+[33mcommit 02f05c9d74db34c2abe03d5213f6f36b07ef43bf[m
+Author: David Trujillo <davot098@gmail.com>
+Date:   Wed Dec 13 19:04:30 2023 -0500
+
+    Creation admin.controler
+
+[33mcommit 6c08d0fe084ccd74be5b55e01de529a7f3f8c695[m
+Author: Jordi7-7 <jordi.cahuas20@gmail.com>
+Date:   Wed Dec 13 18:54:24 2023 -0500
+
+    create carpeta controller BACKEND
+
+[33mcommit 74f6fd3160b9b3fd299b627bb9617adbc6ea476f[m
+Merge: 30a8ea7 0c54081
+Author: AngeloVaca <102611194+AngeloVaca@users.noreply.github.com>
+Date:   Wed Dec 13 18:47:59 2023 -0500
+
+    Merge branch 'main' of https://github.com/DavidTrujillo123/sei
+
+[33mcommit 30a8ea7c557d7c5eee709a04cf7c3d1f447fa7c4[m
+Author: AngeloVaca <102611194+AngeloVaca@users.noreply.github.com>
+Date:   Wed Dec 13 18:47:44 2023 -0500
+
+    login.ejs creamos
+
+[33mcommit 0c54081eb7b34d1b242af929fefc61ec8b51ca23[m
+Author: CristianKenedy <cristian181996@gmail.com>
+Date:   Wed Dec 13 18:35:02 2023 -0500
+
+    Motor de Plantilla
+
+[33mcommit ef6df03eee70464bb1bedb14fbe5712c4fcb0345[m
+Author: AngeloVaca <102611194+AngeloVaca@users.noreply.github.com>
+Date:   Wed Dec 13 18:19:12 2023 -0500
+
+    Organización de Carpetas 2.0
+
+[33mcommit 57c7b5026f43254e53589a335a7b83a3bfcd6180[m
+Author: AngeloVaca <102611194+AngeloVaca@users.noreply.github.com>
+Date:   Wed Dec 13 18:12:17 2023 -0500
+
+    organización del frontend
+
+[33mcommit bb38500d188d8a68b25ad9322e5161bd400ce70b[m
+Author: David Trujillo <davot098@gmail.com>
+Date:   Tue Dec 12 23:05:29 2023 -0500
+
+    fix bugs
+
+[33mcommit c60477a8e7ac051b9e21f7fb75399e6026a0afa7[m
+Author: David Trujillo <davot098@gmail.com>
+Date:   Tue Dec 12 23:02:36 2023 -0500
+
+    add .gitignore
+
+[33mcommit dcf76d569b9de574ed5bc90177bcb5aa475132c0[m
+Author: Jordi7-7 <jordi.cahuas20@gmail.com>
+Date:   Tue Dec 12 22:57:22 2023 -0500
+
+    Inicio del Fin Arquitectura MVC
+
+[33mcommit b66759a1900d7de5f468ef4d26146f276f9e7a2f[m
+Author: Jordi7-7 <jordi.cahuas20@gmail.com>
+Date:   Tue Dec 12 20:36:32 2023 -0500
+
+    dependencias
+
+[33mcommit c0e7877b0bc855df201871a00defcc6475b4519e[m
+Author: Jordi7-7 <jordi.cahuas20@gmail.com>
+Date:   Tue Dec 12 19:59:44 2023 -0500
+
+    Estructura 2 MVC
+
+[33mcommit fa2158b027f4c87fc7d34b17a2b44deb049c390a[m
+Author: David Trujillo <davot098@gmail.com>
+Date:   Tue Dec 12 19:07:56 2023 -0500
+
+    database conexion update
+
+[33mcommit 86febb3887c40ed6d70e34f895e4362c5980ff2b[m
+Author: Jordi7-7 <jordi.cahuas20@gmail.com>
+Date:   Tue Dec 12 19:02:56 2023 -0500
+
+    Creacion de estructura MVC
+
+[33mcommit 922caeef83876495392d1914b8acfa4521db791a[m
+Author: David Trujillo <davot098@gmail.com>
+Date:   Tue Dec 12 15:24:22 2023 -0500
+
+    Fix bugs
+
+[33mcommit 42ff3f8d9820515509c9ad4140485972018b8b20[m
+Author: David Trujillo <davot098@gmail.com>
+Date:   Tue Dec 12 11:43:15 2023 -0500
+
+    smtp created
+
+[33mcommit f23a168ed05abf9fd7e102942165488794c6b750[m
+Author: David Trujillo <davot098@gmail.com>
+Date:   Tue Dec 12 08:45:07 2023 -0500
+
+    API blueprint
+
+[33mcommit 87bf7246c9879d08d6f20c35599511ee7252602c[m
+Author: David Trujillo <davot098@gmail.com>
+Date:   Tue Dec 12 08:40:35 2023 -0500
+
+    Implements blueprint API
+
+[33mcommit e6b4e824a49fe2680ddd251986c67ca566a1af9b[m
+Author: David Trujillo <davot098@gmail.com>
+Date:   Tue Dec 12 08:39:18 2023 -0500
+
+    Fix bugs
+
+[33mcommit c9e784f383210733dde5dc397800016d7ec36654[m
+Merge: b4c1263 ced13cc
+Author: David Trujillo <davot098@gmail.com>
+Date:   Tue Dec 12 08:31:59 2023 -0500
+
+    Merge branch 'main' of github.com:DavidTrujillo123/sei
+
+[33mcommit b4c1263a0da8c2cb3bb32e8878231eb1a1376d1a[m
+Author: David Trujillo <davot098@gmail.com>
+Date:   Tue Dec 12 08:27:31 2023 -0500
+
+    Insert blueprint about API
+
+[33mcommit ced13ccb2ca6141e222d44b7bf4dbf2cb3ede824[m
+Merge: 4b889d6 de7ba2c
+Author: AngeloVaca <102611194+AngeloVaca@users.noreply.github.com>
+Date:   Tue Dec 12 07:46:10 2023 -0500
+
+    Merge branch 'main' of https://github.com/DavidTrujillo123/sei
+
+[33mcommit 4b889d6f5ffc3bbc16c87158d5796548f91eed5d[m
+Author: AngeloVaca <102611194+AngeloVaca@users.noreply.github.com>
+Date:   Tue Dec 12 07:44:52 2023 -0500
+
+    Bienvenida
+
+[33mcommit de7ba2cbc95a8f8a8556d87a038ffc0c32174b3e[m
+Author: Jordi7-7 <jordi.cahuas20@gmail.com>
+Date:   Tue Dec 12 07:44:35 2023 -0500
+
+    wassaaaa
+    
+    wassaaa
+
+[33mcommit 960781e53a2814f22a99bef9b2a75b11e5a3a274[m
+Author: DavidTrujillo123 <102611104+DavidTrujillo123@users.noreply.github.com>
+Date:   Tue Dec 12 07:26:22 2023 -0500
+
+    Initial commit

@@ -1,13 +1,13 @@
 <script>
-    import { getProduct } from '../controller/product.controller';
-    import {user} from '../controller/login.controller';
+    // import { getProduct } from '../controller/product.controller';
+    // import {user} from '../controller/login.controller';
 
-    const products = () =>{
-        const unsubscribe = user.subscribe(value => {
-            let data = value;
-            getProduct(data.user.id) 
-        });
-    }
+    // const products = () =>{
+    //     const unsubscribe = user.subscribe(value => {
+    //         let data = value;
+    //         getProduct(data.user.id) 
+    //     });
+    // }
 
 </script>
 
