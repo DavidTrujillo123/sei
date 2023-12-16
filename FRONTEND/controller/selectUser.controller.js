@@ -20,3 +20,9 @@ export async function postUsersQuery(obj_data) {
     let result = await users.postUsers(obj_data);
     return result;
 }
+
+export async function updateUser(obj_data) {
+    const users = new Usuario();    
+    let result = await users.updateUsers(obj_data);
+    return result;
+}

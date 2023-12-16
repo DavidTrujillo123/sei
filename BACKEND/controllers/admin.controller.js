@@ -281,15 +281,14 @@ const update_user = async (req, res) => {
     );
     res.json({
       message: "Usuario actualizado con exito!!",
-      body: {
-        user: {
-            rol_id: rol_id_p,
-            us_name: us_name_p,
-            us_surname: us_surname_p,
-            us_email: us_email_p,
-            us_password: us_password_p,
-            us_state: true,
-        },
+      user: {
+          us_id: us_id,
+          rol_id: rol_id_p,
+          us_name: us_name_p,
+          us_surname: us_surname_p,
+          us_email: us_email_p,
+          us_password: us_password_p,
+          us_state: us_state_p,
       },
     });
   } catch (error) {

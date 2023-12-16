@@ -12,4 +12,10 @@ export default class Usuario {
         const response = await conn.postData(urlApi, obj_data);
         return response;
     } 
+    async updateUsers(obj_data){
+        const urlApi = 'http://localhost:3000/updateUser';
+        const conn = new Conexion;
+        const response = await conn.putData(urlApi, obj_data);
+        return response;
+    } 
 }
