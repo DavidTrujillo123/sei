@@ -24,9 +24,17 @@
             productoSeleccionado = product;
         }
     }
+
+   let  cat = [
+        "All",
+        "Clothes",
+        "Electronics",
+        "Furnitures",
+        "Toys",
+    ];
 </script>
 
-<NavBar />
+<NavBar categories={cat}/>
 <section class="main container">
     <div class="cards-container">
         {#if data != [] && data != undefined }
