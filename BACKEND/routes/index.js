@@ -1,51 +1,72 @@
-const {Router} = require('express');//funcion de expres para administrar rutas
+const { Router } = require("express"); //funcion de expres para administrar rutas
 const router = Router();
 const {
-    select_users,
-    select_products,
-    select_roles,
-    select_audit,
-    select_shopping_order,
-    select_det_shopping_order,
-    select_cat_pro,
-    insert_category_product,
-    insert_det_shopping_order,
-    insert_shopping_order,
-    insert_user,
-    update_user} = require('../controllers/admin.controller');
+  select_users,
+  select_products,
+  select_roles,
+  select_audit,
+  select_shopping_order,
+  select_det_shopping_order,
+  select_cat_pro,
 
-const {getProducts} = require('../controllers/general.controller');
+  insert_category_product,
+  insert_det_shopping_order,
+  insert_shopping_order,
+  insert_user,
+  insert_product,
+  insert_role,
 
-const {
-    isUser
-} = require('../controllers/users.controller');
+  update_user,
+  update_product,
+  update_role,
+  update_category_product,
+  update_det_shopping_order,
+  update_shopping_order,
 
+  delete_category_product,
+  delete_det_shopping_order,
+  delete_product,
+  delete_shopping_order,
+  delete_role,
+  delete_user,
+} = require("../controllers/admin.controller");
+
+const { getProducts } = require("../controllers/general.controller");
+
+const { isUser } = require("../controllers/users.controller");
 
 //RUTAS DE USUARIO
-router.post('/getProducts',getProducts);
-
+router.post("/getProducts", getProducts);
 
 //RUTAS DE ADMINISTRADOR
-router.post('/isUser',isUser);
-router.get('/selectUsers/:adm_id',select_users);
-router.get('/selectProducts/:adm_id',select_products);
-router.get('/selectCategoriesProducts/:adm_id',select_cat_pro);
-router.get('/selectRoles/:adm_id',select_roles);
-router.get('/selectAudit/:adm_id',select_audit);
-router.get('/selectOrders/:adm_id',select_shopping_order);
-router.post('/selectdetOrders/',select_det_shopping_order);
+router.post("/isUser", isUser);
+router.get("/selectUsers/:adm_id", select_users);
+router.get("/selectProducts/:adm_id", select_products);
+router.get("/selectCategoriesProducts/:adm_id", select_cat_pro);
+router.get("/selectRoles/:adm_id", select_roles);
+router.get("/selectAudit/:adm_id", select_audit);
+router.get("/selectOrders/:adm_id", select_shopping_order);
+router.post("/selectdetOrders/", select_det_shopping_order);
 
+router.post("/insertUser", insert_user);
+router.post("/insertCategoryProduct", insert_category_product);
+router.post("/insertDetShoppingOrder", insert_det_shopping_order);
+router.post("/insertShoppingOrder", insert_shopping_order);
+router.post("/insertRole", insert_role);
+router.post("/insertProduct", insert_product);
 
-router.post('/insertUser',insert_user);
-router.post('/insertCategoryProducts',insert_category_product);
-router.post('/insertDetShoppingOrder',insert_det_shopping_order);
-router.post('/insertShoppingOrder',insert_shopping_order);
+router.put("/updateUser", update_user);
+router.put("/updateProduct", update_product);
+router.put("/updateCategoryProduct", update_category_product);
+router.put("/updateDetShoppingOrder", update_det_shopping_order);
+router.put("/updateShoppingOrder", update_shopping_order);
+router.put("/updateRole", update_role);
 
-router.put('/updateUser',update_user);
-
-
-
-
-
+router.delete("/deleteUser", delete_user);
+router.delete("/deleteProduct", delete_product);
+router.delete("/deleteCategoryProduct", delete_category_product);
+router.delete("/deleteDetShoppingOrder", delete_det_shopping_order);
+router.delete("/deleteShoppingOrder", delete_shopping_order);
+router.delete("/deleteRole", delete_role);
 
 module.exports = router;
