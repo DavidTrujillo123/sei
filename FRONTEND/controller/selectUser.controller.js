@@ -1,4 +1,4 @@
-import Usuario from '../Model/User.js';
+import Usuario from '../Model/User.mjs';
 import { getSession } from '../Model/Session.js';
 
 async function getUsersQuery(obj_data) {
