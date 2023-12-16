@@ -3,7 +3,6 @@ import {Link, navigate } from "svelte-routing";
 
 
 export const isVerifiedEmail = (code)  =>{
-    
     const unsubscribe = user.subscribe(value => {
         let data = value;
         console.log('Nuevo valor del usuario en OtroComponente:', data);
@@ -12,7 +11,5 @@ export const isVerifiedEmail = (code)  =>{
         }else{
             alert("Ta mal la clave")
         }
-
     });
-    
 }

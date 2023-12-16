@@ -15,9 +15,9 @@ export function redirect(response,flag){
     if(response.res == "TRUE" && flag){
         code = generateVerificationCode()
         user = createUser()
-        user.setUser(response, code)
+        user.setUser(response.user, code)
         const smtp = new SMTP();
-        smtp.sendVerificationEmail(response.us_email,  code, response.us_nombre)
+        smtp.sendVerificationEmail(response.user.us_email,  code, response.user.us_nombre)
 
 
         navigate('/emalsend', { replace: true })

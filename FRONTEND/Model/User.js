@@ -8,7 +8,6 @@ class Usuario {
         this._us_state = us_state;
     }
 
-
     // Getter y Setter para rol_id
     get rol_id() {
         return this._rol_id;

@@ -1,6 +1,14 @@
 <script>
+    import { getProduct } from '../controller/product.controller';
+    import {user} from '../controller/login.controller';
 
-    
+    const products = () =>{
+        const unsubscribe = user.subscribe(value => {
+            let data = value;
+            getProduct(data.user.id) 
+        });
+    }
+
 </script>
 
 
@@ -62,10 +70,10 @@
         --md: 16px;
         --lg: 18px;
     }
-    body {
+    /* body {
         font-family: "Quicksand", sans-serif;
         margin: 0;
-    }
+    } */
     .cards-container {
         --card-size: 240px;
         display: grid;
