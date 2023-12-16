@@ -49,4 +49,20 @@ export default class Conexion {
             throw err;
         }
     }
+    async deleteData(urlApi, obj_data){
+        try {
+            const response = await fetch(urlApi, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(obj_data),
+            });
+            const data = await response.json();
+            return data;
+        } catch (err) {
+            console.error('Error during DELETE:', err);
+            throw err;
+        }
+    }
 }

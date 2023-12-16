@@ -18,4 +18,10 @@ export default class Usuario {
         const response = await conn.putData(urlApi, obj_data);
         return response;
     } 
+    async deleteUsers(obj_data){
+        const urlApi = 'http://localhost:3000/deleteUser';
+        const conn = new Conexion;
+        const response = await conn.deleteData(urlApi, obj_data);
+        return response;
+    } 
 }
