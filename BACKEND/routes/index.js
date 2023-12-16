@@ -11,7 +11,8 @@ const {
     insert_category_product,
     insert_det_shopping_order,
     insert_shopping_order,
-    insert_user} = require('../controllers/admin.controller');
+    insert_user,
+    update_user} = require('../controllers/admin.controller');
 
 const {getProducts} = require('../controllers/general.controller');
 
@@ -40,6 +41,7 @@ router.post('/insertCategoryProducts',insert_category_product);
 router.post('/insertDetShoppingOrder',insert_det_shopping_order);
 router.post('/insertShoppingOrder',insert_shopping_order);
 
+router.put('/updateUser',update_user);
 
 
 
