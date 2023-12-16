@@ -2,11 +2,13 @@
     import { getSession } from "../../Model/Session.js";
     import Menu from "./Menu.svelte";
     import ShopingCart from "./Shoping_cart.svelte";
-    export let categories;
+    export let tablas;
+    export let flag_Cart=false;
 
     let data = getSession("user");
 
     let flag_menu = false;
+    
     let flag_shopping_cart = false;
     const doClickMenu = () => {
         if (flag_menu == true) flag_menu = false;
@@ -33,7 +35,7 @@
             class="logo"
         />
         <ul>
-            {#each categories as category (category)}
+            {#each tablas as category (category)}
                 <li><a href="/{category}">{category}</a></li>
             {/each}
         </ul>
@@ -48,6 +50,7 @@
                     on:click={doClickMenu}
                 />
             </li>
+            {#if flag_Cart}
             <li class="navbar-shopping-cart" on:click={doClickShoppingCart}>
                 <img
                     src="../public/resource/iconos/icon_shopping_cart.svg"
@@ -55,6 +58,7 @@
                 />
                 <div>2</div>
             </li>
+            {/if}
             {#if flag_menu}
                 <Menu />
             {/if}

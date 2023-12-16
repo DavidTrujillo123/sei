@@ -4,6 +4,7 @@
   import Email_send from "./views/Email_send.svelte";
   import Products from "./views/Products.svelte";
   import Audit from "./views/Audit.svelte";
+  import Admin_Users from "./views/Admin_Users.svelte";
   import Admin from "./views/Admin.svelte";
 
   
@@ -55,6 +56,9 @@
             </Route>
 			<Route path="/audit">
                 <Audit></Audit>
+            </Route>
+            <Route path="/Usuarios">
+                <Admin_Users></Admin_Users>
             </Route>
             <Route path="/admin">
                 <Admin></Admin>
