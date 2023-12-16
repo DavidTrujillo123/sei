@@ -1,6 +1,7 @@
 import Login from '../Model/Login.mjs';
 import SMTP from '../Model/SMTP.mjs';
-import { writable } from 'svelte/store'
+import { writable } from 'svelte/store';
+import { setSession } from '../Model/Session.js';
 import {  Link, navigate } from "svelte-routing";
 
 let code;
@@ -16,6 +17,7 @@ export function redirect(response,flag){
         code = generateVerificationCode()
         user = createUser()
         user.setUser(response.user, code)
+        setSession("user", response)
         const smtp = new SMTP();
         smtp.sendVerificationEmail(response.user.us_email,  code, response.user.us_nombre)
 

@@ -1,9 +1,13 @@
 <script>
   import {audit} from '../controller/audit.controller';
   import { onMount } from "svelte";
+  import { getSession, setSession } from '../Model/Session.js';
 
-  let params = 1
-  console.log(params);
+
+  const storedUser = getSession("user")
+  
+  console.log(storedUser);
+  let params = storedUser.user.us_id;
   let res = []
   let data1 = []
   async function getDataAudit() {
