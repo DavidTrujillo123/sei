@@ -1,6 +1,9 @@
 <script>
     import { getProduct } from "../controller/product.controller";
     import { onMount } from "svelte";
+    import NavBar from "./NavBar.svelte";
+    // import { Router, Link, Route } from "svelte-routing";
+
     let query = [];
     let data = []
     const products = async () => {
@@ -14,52 +17,7 @@
     
 </script>
 
-<!-- <section class="main container">
-    <div class="cards-container">
-        <div class="product-card">
-            <img src="https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="">
-            <div class="product-info">
-                <div>
-                    <p>$120,00</p>        
-                    <p>Bike</p>
-                </div>
-                <figure>
-                    <img src="
-                    ../public/resource/bt_add_to_cart.svg"
-                    alt="products">
-                </figure>
-            </div>
-        </div>
-        <div class="product-card">
-            <img src="https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="">
-            <div class="product-info">
-                <div>
-                    <p>$120,00</p>        
-                    <p>Bike</p>
-                </div>
-                <figure>
-                    <img src="
-                    ../public/resource/bt_add_to_cart.svg"
-                    alt="products">
-                </figure>
-            </div>
-        </div>
-        <div class="product-card">
-            <img src="https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="">
-            <div class="product-info">
-                <div>
-                    <p>$120,00</p>        
-                    <p>Bike</p>
-                </div>
-                <figure>
-                    <img src="
-                    ../public/resource/bt_add_to_cart.svg"
-                    alt="products">
-                </figure>
-            </div>
-        </div>
-    </div>   
-</section> -->
+<NavBar />
 <section class="main container">
     <div class="cards-container">
         {#if data != [] && data!= undefined }

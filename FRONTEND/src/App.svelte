@@ -2,7 +2,7 @@
   import { Router, Link, Route } from "svelte-routing";
   import Form from "./Form.svelte";
   import Email_send from "./Email_send.svelte";
-  import Page from "./Page.svelte";
+  import Products from "./Products.svelte";
   import Audit from "./Audit.svelte";
 
   
@@ -31,14 +31,14 @@
 
 <body>
     <header>
-        <h1>Seguridad<span> SEI</span> </h1>
-        <nav>
+        <!-- <h1>Seguridad<span> SEI</span> </h1> -->
+        <!-- <nav>
             <Router>
                 <div class="link"><Link to="/">Formulario</Link></div> 
 				<div class="link"><Link to="/login">Login</Link></div>
 				<div class="link"><Link to="/perfil">Perfil</Link></div>                
             </Router>
-        </nav>
+        </nav> -->
     </header>
 
     <main>
@@ -49,8 +49,8 @@
 			<Route path="/emalsend">
 				<Email_send></Email_send>
 			</Route>
-            <Route path="/page">
-                <Page></Page>
+            <Route path="/products">
+                <Products></Products>
             </Route>
 			<Route path="/audit">
                 <Audit></Audit>
@@ -89,11 +89,11 @@ h1 {
     margin-left: 5px;
 }
 
-h1 span {
-    font-size: 0.8em; /* Ajusta el tamaño de la fuente del span según sea necesario */
-    margin-left: 15px; /* Ajusta el margen según sea necesario */
+/*h1 span {
+    font-size: 0.8em; 
+    margin-left: 15px; 
 	color: #fff;
- }
+ }*/
 /* .sveltekit-link  {
     text-decoration: none;
     color: #fff;
