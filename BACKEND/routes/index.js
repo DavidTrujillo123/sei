@@ -4,6 +4,7 @@ const {
     select_users,
     select_products,
     select_roles,
+    select_audit,
     select_shopping_order,
     select_det_shopping_order,
     select_cat_pro,
@@ -19,7 +20,7 @@ const {
 } = require('../controllers/users.controller');
 
 
-
+//RUTAS DE USUARIO
 router.post('/getProducts',getProducts);
 
 
@@ -29,8 +30,10 @@ router.get('/selectUsers/:adm_id',select_users);
 router.get('/selectProducts/:adm_id',select_products);
 router.get('/selectCategoriesProducts/:adm_id',select_cat_pro);
 router.get('/selectRoles/:adm_id',select_roles);
+router.get('/selectAudit/:adm_id',select_audit);
 router.get('/selectOrders/:adm_id',select_shopping_order);
 router.post('/selectdetOrders/:adm_id',select_det_shopping_order);
+
 
 router.post('/insertUser',insert_user);
 router.post('/insertCategoryProducts',insert_category_product);

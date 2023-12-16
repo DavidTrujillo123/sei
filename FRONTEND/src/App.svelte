@@ -3,6 +3,7 @@
   import Form from "./Form.svelte";
   import Email_send from "./Email_send.svelte";
   import Page from "./Page.svelte";
+  import Audit from "./Audit.svelte";
 
   
 </script>
@@ -50,6 +51,9 @@
 			</Route>
             <Route path="/page">
                 <Page></Page>
+            </Route>
+			<Route path="/audit">
+                <Audit></Audit>
             </Route>
         </Router>
     </main>
