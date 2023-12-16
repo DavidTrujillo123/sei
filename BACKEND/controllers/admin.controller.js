@@ -89,6 +89,27 @@ const select_roles = async (req, res) => {
   }
 };
 
+const select_audit = async (req, res) => {
+  const adm_id = req.params.adm_id;
+  try {
+    const response = await db.any(`SELECT * FROM select_audit($1);`, [adm_id]);
+    if (response) {
+      res.json({
+        response,
+      });
+    } else {
+      res.json({
+        res: "Registros no encontrados",
+      });
+    }
+  } catch (error) {
+    res.json({
+      res: "ERROR",
+      error: error.message,
+    });
+  }
+};
+
 const select_shopping_order = async (req, res) => {
   const adm_id = req.params.adm_id;
   try {
@@ -239,6 +260,7 @@ module.exports = {
   select_users,
   select_products,
   select_roles,
+  select_audit,
   select_shopping_order,
   select_det_shopping_order,
   select_cat_pro,
