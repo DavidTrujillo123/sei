@@ -1,5 +1,5 @@
 <script>
-  import { login, redirect, validateRecaptcha } from '../controller/login.controller.js';
+  import { login, redirect, validateRecaptcha } from '../../controller/login.controller.js';
   import Error_login from "./Error_login.svelte";
 
   let flag;  

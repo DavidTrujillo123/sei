@@ -1,7 +1,7 @@
 <script>
-  import {audit} from '../controller/audit.controller';
+  import {audit} from '../../controller/audit.controller';
   import { onMount } from "svelte";
-  import { getSession } from '../Model/Session.js';
+  import { getSession } from '../../Model/Session.js';
 
 
   const storedUser = getSession("user");

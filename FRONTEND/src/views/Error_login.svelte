@@ -1,6 +1,6 @@
 <script>
   export let flag;
-  import Form from "./Form.svelte";
+  import Form from "./Login.svelte";
 </script>
 
 <main>

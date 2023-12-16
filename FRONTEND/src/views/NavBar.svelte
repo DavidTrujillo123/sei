@@ -10,7 +10,7 @@
         <img src="../public/resource/logos/logo_yard_sale.svg" alt="logo" class="logo">
         <ul>
             <li><a href="/audit">All</a></li>
-            <li><a href="">Clothes</a></li>
+            <li><a href="/">Clothes</a></li>
             <li><a href="">Electronics</a></li>
             <li><a href="">Furnitures</a></li>
             <li><a href="">Toys</a></li>

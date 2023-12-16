@@ -1,5 +1,5 @@
 <script>
-    import {isVerifiedEmail} from "../controller/smtp.controller.js"
+    import {isVerifiedEmail} from "../../controller/smtp.controller.js"
     let codigo = ""
     const doSubmit = () =>{
         if(codigo.trim()){

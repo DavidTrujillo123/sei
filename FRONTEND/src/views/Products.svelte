@@ -1,5 +1,5 @@
 <script>
-    import { getProduct } from "../controller/product.controller";
+    import { getProduct } from "../../controller/product.controller";
     import { onMount } from "svelte";
     import NavBar from "./NavBar.svelte";
     // import { Router, Link, Route } from "svelte-routing";

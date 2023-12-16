@@ -1,9 +1,9 @@
 <script>
   import { Router, Link, Route } from "svelte-routing";
-  import Form from "./Form.svelte";
-  import Email_send from "./Email_send.svelte";
-  import Products from "./Products.svelte";
-  import Audit from "./Audit.svelte";
+  import Login from "./views/Login.svelte";
+  import Email_send from "./views/Email_send.svelte";
+  import Products from "./views/Products.svelte";
+  import Audit from "./views/Audit.svelte";
 
   
 </script>
@@ -44,7 +44,7 @@
     <main>
         <Router>
             <Route path="/">
-				<Form></Form>
+				<Login></Login>
 				  </Route>
 			<Route path="/emalsend">
 				<Email_send></Email_send>
