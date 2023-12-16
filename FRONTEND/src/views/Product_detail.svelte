@@ -23,7 +23,7 @@
         <p>{det_pro.pro_price}</p>
         <p>{det_pro.pro_name}</p>
         <p>
-            {det_pro.pro_desciption}
+            {det_pro.pro_description}
         </p>
         <button class="primary-button add-to-cart-button" on:click={closeWindow}>
             <img src="../public/resource/iconos/bt_add_to_cart.svg" alt="add to cart" />
