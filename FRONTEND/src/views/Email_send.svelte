@@ -5,8 +5,7 @@
     import {navigate } from "svelte-routing";
 
     let codigo = ""
-    let userSession = getSession('user');
-    let flag_credentials = isAutenticated(userSession);
+    let flag_credentials = isAutenticated();
     const doSubmit = () =>{
         if(codigo.trim()){
             isVerifiedEmail(codigo)
