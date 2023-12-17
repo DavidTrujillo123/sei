@@ -29,6 +29,8 @@ const {
   delete_shopping_order,
   delete_role,
   delete_user,
+
+  count_actions
 } = require("../controllers/admin.controller");
 
 const { getProducts } = require("../controllers/general.controller");
@@ -40,6 +42,9 @@ router.post("/getProducts", getProducts);
 
 //RUTAS DE ADMINISTRADOR
 router.post("/isUser", isUser);
+router.get("/count/:action", count_actions);
+
+
 router.get("/selectUsers/:adm_id", select_users);
 router.get("/selectProducts/:adm_id", select_products);
 router.get("/selectCategoriesProducts/:adm_id", select_cat_pro);
