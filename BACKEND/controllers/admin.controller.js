@@ -524,7 +524,7 @@ const update_category_product = async (req, res) => {
 //DELETES
 
 const delete_user = async (req, res) => {
-  const { us_id_p, us_id_created } = req.body;
+  const { us_id_p, us_id_created } = req.query;
   try {
     const response = await db.any(`CALL public.delete_user($1,$2);`, [
       us_id_p,

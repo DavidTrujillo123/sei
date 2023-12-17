@@ -33,7 +33,6 @@ export default class SMTP {
 
 
   async sendVerificationEmail(recipientEmail, verificationCode,username) {
-    console.log("1:"+recipientEmail + "2"+username + "3"+verificationCode)
     const emailData = this.buildEmailData(recipientEmail, verificationCode, username);
 
     const config = {
@@ -44,10 +43,8 @@ export default class SMTP {
       },
     };
 
-    try {
-      
+    try {      
       const response = await axios.post(this.apiUrl, emailData, config);
-      console.log(response);
       return response;
     } catch (error) {
         return error.message;

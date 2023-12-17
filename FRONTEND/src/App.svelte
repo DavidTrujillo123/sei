@@ -7,13 +7,12 @@
   import Admin_Users from "./views/Admin_Users.svelte";
   import Admin from "./views/Admin.svelte";
   import User_Form from "./views/User_Form.svelte";
-  import Table from "./views/Table.svelte";
   import Admin_Product from "./views/Admin_Product.svelte";
   
 </script>
 
-<body>
-    <main>
+<!-- <body>
+    <main> -->
         <Router>
             <Route path="/">
 				<Login></Login>
@@ -40,7 +39,7 @@
                 <Admin_Product></Admin_Product>
             </Route>
         </Router>
-    </main>
-</body>
+    <!-- </main>
+</body> -->
 
 

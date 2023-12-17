@@ -1,14 +1,25 @@
 <script>
     import {isVerifiedEmail} from "../../controller/smtp.controller.js"
+    import { isAutenticated } from "../../controller/autenticated.controller.js";
+    import { getSession } from "../../Model/Session.js";
+    import {navigate } from "svelte-routing";
+
     let codigo = ""
+    let userSession = getSession('user');
+    let flag_credentials = isAutenticated(userSession);
     const doSubmit = () =>{
         if(codigo.trim()){
-            console.log("entro if")
             isVerifiedEmail(codigo)
         }
     }
+
+    if (!flag_credentials) {
+        navigate('/', { replace: true });
+        location.reload();
+    }
 </script>
 
+{#if flag_credentials}
 <div class="container_email ">
     <h1>Código de Seguridad</h1>
     <form on:submit|preventDefault={doSubmit}>
@@ -18,7 +29,7 @@
         <input type="submit" value="Submit">    
     </form>
 </div>
-
+{/if}
 <style>
 .container_email {
     font-family: Arial, sans-serif;

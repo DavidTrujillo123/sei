@@ -2,7 +2,7 @@ import Login from '../Model/Login.mjs';
 import SMTP from '../Model/SMTP.mjs';
 import { writable } from 'svelte/store';
 import { setSession } from '../Model/Session.js';
-import {  Link, navigate } from "svelte-routing";
+import { navigate } from "svelte-routing";
 
 let code;
 export let user;
@@ -13,6 +13,7 @@ export async function login(obj_data) {
 }
 
 export function redirect(response, flag){
+    
     if(response.res == "TRUE" && flag){
         const smtp = new SMTP();
 

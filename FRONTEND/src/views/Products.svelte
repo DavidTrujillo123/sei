@@ -3,7 +3,6 @@
     import { onMount } from "svelte";
     import NavBar from "./NavBar.svelte";
     import ProductDetail from "./Product_detail.svelte";
-    let flag_Cart;
     let query = [];
     let data = [];
     let productoSeleccionado = null;
