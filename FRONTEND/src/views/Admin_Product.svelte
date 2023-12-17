@@ -1,5 +1,5 @@
 <script>
-    import { getUsers } from '../../controller/selectUser.controller';
+    import { getProduct } from '../../controller/product.controller';
     import { onMount } from "svelte";
     import { getSession } from '../../Model/Session.js';
     import NavBar from "./NavBar.svelte";   
@@ -14,12 +14,12 @@
     let res = []
     let data1 = [];
     let e = null;
-    async function getDataUsers() {
-      res = await getUsers();
+    async function getDataProducts() {
+      res = await getProduct();
       data1 = res.response
     }
     onMount(() => {
-      getDataUsers();
+      getDataProducts();
     });
 
     let  cat = [
@@ -32,24 +32,24 @@
     ];
     
     let  filas = [
-      "Rol ID",
-      "User ID",
-      "Name User",
-      "SurName",
-      "Email",
-      "Password", 
+      "Categoria ID",
+      "Name Product",
+      "Price",
+      "Stock",
+      "img",
+      "Description", 
       "Acciones" 
     ];
 
     let obj_par = [
-      'rol_id',
-      'us_id',
-      'us_name',
-      'us_surname',
-      'us_email',
-      'us_password'
+      'cat_id',
+      'pro_name',
+      'pro_price',
+      'pro_stock',
+      'pro_img',
+      'pro_description'
     ]
   </script>
   <NavBar tablas={cat}/> 
   
-  <Table dataObj={data1}  rows_name={filas} rows_data={obj_par} name_componented={'Admin_Users'} />
+  <Table dataObj={data1}  rows_name={filas} rows_data={obj_par} name_componented={'Admin_Product'} />

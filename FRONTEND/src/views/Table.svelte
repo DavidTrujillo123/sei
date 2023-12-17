@@ -8,15 +8,29 @@
     import { navigate } from 'svelte-routing';
 
     
-    export const delete_data = () =>{
-        if(name_componented == 'Admin_Users'){
-
+    
+    export const delete_data = (rowData) => {
+    if (name_componented === 'Admin_Users') {
+      // Muestra una confirmación antes de eliminar
+      const isConfirmed = window.confirm("¿Estás seguro de que deseas eliminar este elemento?");
+      
+      if (isConfirmed) {
+        // Aquí puedes realizar la lógica para eliminar el elemento
+        const indexToDelete = dataObj.findIndex(item => item === rowData);
+        
+        if (indexToDelete !== -1) {
+          dataObj.splice(indexToDelete, 1);
+          console.log("Elemento eliminado", rowData);
         }
+      }
     }
+  };
 
     export const edit_data = () =>{
          if(name_componented == 'Admin_Users'){
             navigate('/User_Form');
+        }else if (name_componented == 'Admin_Product'){
+          navigate('/User_Form');
         }
     }
 
@@ -24,8 +38,8 @@
 
   <main>
     <div class="header-container">
-      <h3>Tabla de Usuarios</h3>
-      <button class="new-user-button">Nuevo Usuario</button>
+      <h3>Table</h3>
+      <button class="new-user-button">Crear Nuevo</button>
     </div>
       <table class="table_users">
           <thead>
@@ -48,11 +62,17 @@
 
                   <tr>
                      {#each rows_data as category (category)}
-                         <td>{data[category]}</td>
+                     {#if category.includes("img")}
+                         <td><img class="pro_img" src={data[category]} > </td>
+                         {:else}
+                         <td> {data[category]}</td>
+
+                         {/if}
+                         
                     {/each}
                   <td>
                     <button on:click={edit_data} >Editar</button>
-                    <button on:click={delete_data} class="delete">Eliminar</button>
+                    <button on:click={() => delete_data(data)} class="delete">Eliminar</button>
                   </td>
                   </tr>
               {/each}
@@ -110,6 +130,11 @@
     color: #fff;
     font-weight: 400;
     padding: 0.65em 1em;
+  }
+  .pro_img {
+    width: 100px; /* Establece el ancho deseado */
+    height: 75px; /* Establece la altura deseada */
+    object-fit: cover; /* Ajusta la imagen manteniendo las proporciones y cubriendo el contenedor */
   }
   
   tbody tr {

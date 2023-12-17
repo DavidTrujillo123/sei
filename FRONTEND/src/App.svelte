@@ -8,6 +8,7 @@
   import Admin from "./views/Admin.svelte";
   import User_Form from "./views/User_Form.svelte";
   import Table from "./views/Table.svelte";
+  import Admin_Product from "./views/Admin_Product.svelte";
   
 </script>
 
@@ -66,6 +67,9 @@
             </Route>
             <Route path="/User_Form">
                 <User_Form></User_Form>
+            </Route>
+            <Route path="/Producto">
+                <Admin_Product></Admin_Product>
             </Route>
         </Router>
     </main>
