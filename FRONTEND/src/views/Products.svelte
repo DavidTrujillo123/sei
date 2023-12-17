@@ -25,7 +25,7 @@
         }
     }
 
-   let  cat = [
+    let  cat = [
         "All",
         "Clothes",
         "Electronics",

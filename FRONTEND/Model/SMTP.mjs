@@ -2,7 +2,8 @@ import axios from 'axios';
 
 export default class SMTP {
   constructor() {
-    this.apiKey = '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';
+    //this.apiKey = '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';
+    this.apiKey = '';
     this.apiUrl = 'https://api.brevo.com/v3/smtp/email';
   }
 

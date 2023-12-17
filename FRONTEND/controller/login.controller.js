@@ -12,17 +12,21 @@ export async function login(obj_data) {
     return response;
 }
 
-export function redirect(response,flag){
+export function redirect(response, flag){
     if(response.res == "TRUE" && flag){
-        code = generateVerificationCode()
-        user = createUser()
-        user.setUser(response.user, code)
-        setSession("user", response)
         const smtp = new SMTP();
+
+        code = generateVerificationCode();
+        user = createUser();
+
+        //user.setUser(response.user, code);
+        setSession("user", response);
+        setSession("code", code);
+
         smtp.sendVerificationEmail(response.user.us_email,  code, response.user.us_nombre)
 
-
         navigate('/emalsend', { replace: true })
+       
     }
 }
 
