@@ -1,55 +1,14 @@
-import axios from 'axios';
-
+import Conexion from './Conexion.mjs';
 export default class SMTP {
-  constructor() {
-    //this.apiKey = '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';
-    this.apiKey = '';
-    this.apiUrl = 'https://api.brevo.com/v3/smtp/email';
-  }
-
-  buildEmailData(recipientEmail, verificationCode, username) {
-    return {
-      sender: {
-        name: 'Código autentificación SEI',
-        email: 'cursosutn95@gmail.com',
-      },
-      to: [
-        {
-          email: recipientEmail,
-          name: username,
-        },
-      ],
-      subject: 'Código de Verificación',
-      htmlContent: `
-        <html>
-          <head>
-          </head>
-          <body>
-            <p>Tu código de verificación es: <strong>${verificationCode}</strong></p>
-          </body>
-        </html>`,
-    };
-  }
-
-
-  async sendVerificationEmail(recipientEmail, verificationCode,username) {
-    const emailData = this.buildEmailData(recipientEmail, verificationCode, username);
-
-    const config = {
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json',
-        'api-key': this.apiKey,
-      },
-    };
-
-    try {      
-      const response = await axios.post(this.apiUrl, emailData, config);
+  	sendEmail (email, code, username) {
+      let con = new Conexion();
+      let url = 'http://localhost:3000/smtp';
+      let obj_data = {
+        recipientEmail: email,
+        verificationCode: code,
+        username: username
+      }
+      let response = con.postData(url, obj_data);
       return response;
-    } catch (error) {
-        return error.message;
     }
-
-    
-  }
 }

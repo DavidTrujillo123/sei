@@ -20,11 +20,11 @@ export async function redirect(obj_data,flag){
         const smtp = new SMTP();
         code = generateVerificationCode();
         user = createUser();
-    
-        setSession("user", response);
+        
+        setSession("user1", response);
         setSession("code", code);
 
-        smtp.sendVerificationEmail(response.user.us_email,  code, response.user.us_nombre)
+        smtp.sendEmail(response.user.us_email,  code, response.user.us_nombre);
 
         navigate('/emalsend', { replace: true })       
     }

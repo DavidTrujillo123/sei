@@ -1,5 +1,6 @@
 const { Router } = require("express"); //funcion de expres para administrar rutas
 const router = Router();
+const { send_email } = require("../controllers/smtp.controller.js");
 const {
   select_users,
   select_users_active,
@@ -39,6 +40,9 @@ const {
 const { getProducts } = require("../controllers/general.controller");
 
 const { isUser } = require("../controllers/users.controller");
+
+//RUTA SMTP
+router.post("/smtp", send_email); 
 
 //RUTAS DE USUARIO
 router.post("/getProducts", getProducts);

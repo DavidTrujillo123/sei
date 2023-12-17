@@ -5,9 +5,15 @@ export function isAutenticated() {
     return useSession != null;
 }
 
+export function isAutenticatedInit() {
+    let useSession = getSession('user1');
+    return useSession != null;
+}
+
 export function navigateLogin(){
     navigate('/', { replace: true })
     removeSession('user');
+    removeSession('user1');
     location.reload();
 }
 

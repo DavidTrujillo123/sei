@@ -1,12 +1,12 @@
 <script>
     import { isVerifiedEmail, redirectByRole } from "../../controller/smtp.controller.js";
     import {
-        isAutenticated,
+        isAutenticatedInit,
         navigateLogin,
     } from "../../controller/autenticated.controller";
     import ErrorLogin from "../components/Error_login.svelte";
 
-    let userCredentials = isAutenticated();
+    let userCredentials = isAutenticatedInit();
     let codigo = "";
     let cont = 5;
     let flag_error = false;
@@ -14,6 +14,7 @@
     if (!userCredentials) {
         navigateLogin();
     }
+
     const doSubmit = () => {
         if (codigo.trim()) {
             let flag = isVerifiedEmail(codigo);
@@ -31,6 +32,7 @@
             }
         }
     };
+    
 </script>
 
 {#if userCredentials}

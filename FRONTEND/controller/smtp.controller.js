@@ -2,14 +2,13 @@
 import {navigate} from "svelte-routing";
 import { getSession, removeSession,setSession } from '../Model/Session.js';
 
-const userSession = getSession('user');
 const codeSession = getSession('code');
-
-removeSession('user');
+const userSession = getSession('user1');
 
 export const isVerifiedEmail = (code) =>{
     if(codeSession == code){
         setSession('user', userSession);
+        removeSession('user1');
         return true;
     }
     else{
@@ -21,7 +20,7 @@ export const redirectByRole=()=>{
     let rol_id = userSession.user.rol_id;
         if(rol_id == 0){
             navigate('/', { replace: true })
-            removeSession('user');
+            removeSession('user1');
             removeSession('code');
         }
         else if(rol_id == 1){
