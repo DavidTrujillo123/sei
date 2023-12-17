@@ -27,10 +27,10 @@
     {#if res!=undefined}
       {#if flag == true}
         { #if res.res = "FALSE"}
-          <Error_login flag = 1/>
+          <Error_login message={'Error en el usuario o contraseña'}/>
         {/if}
       {:else}
-         <Error_login flag = 2/>
+         <Error_login message={'Por favor realize el Captcha'}/>
       {/if}
     {/if}
     <form on:submit|preventDefault={ doSubmit} class="form">

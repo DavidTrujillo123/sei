@@ -4,13 +4,16 @@
         isAutenticated,
         navigateLogin,
     } from "../../controller/autenticated.controller";
+    import ErrorLogin from "../components/Error_login.svelte";
 
     let userCredentials = isAutenticated();
+    let codigo = "";
+    let cont = 5;
+    let flag_error = false;
+    
     if (!userCredentials) {
         navigateLogin();
     }
-    let codigo = "";
-    let cont = 0;
     const doSubmit = () => {
         if (codigo.trim()) {
             let flag = isVerifiedEmail(codigo);
@@ -18,13 +21,13 @@
                 redirectByRole();
             }
             else{
-                if(cont < 5){
-                    cont++;
-                    alert('Error! ingrese nuevamente el código. Intentos: '+cont);
+                flag_error = true;
+                if(cont > 1){
+                    cont--;
                 }
                 else{
-                    cont = 0;
                     navigateLogin();
+                    //cont = 5;
                 }
             }
         }
@@ -33,6 +36,9 @@
 
 {#if userCredentials}
     <div class="container_email">
+        {#if flag_error}
+        	<ErrorLogin message={'Error en el código por favor ingrese otra vez. Intentos: '+cont}/>
+        {/if}
         <h1>Código de Seguridad</h1>
         <form on:submit|preventDefault={doSubmit}>
             <h2>Código de Verificación</h2>
