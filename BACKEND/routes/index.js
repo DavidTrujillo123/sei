@@ -2,6 +2,7 @@ const { Router } = require("express"); //funcion de expres para administrar ruta
 const router = Router();
 const {
   select_users,
+  select_users_active,
   select_products,
   select_roles,
   select_audit,
@@ -50,6 +51,7 @@ router.get("/countActionsTable/:id_user", count_actions_table_by_user);
 
 
 router.get("/selectUsers/:adm_id", select_users);
+router.get("/selectUsersActive/:adm_id", select_users_active);
 router.get("/selectProducts/:adm_id", select_products);
 router.get("/selectCategoriesProducts/:adm_id", select_cat_pro);
 router.get("/selectRoles/:adm_id", select_roles);

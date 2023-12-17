@@ -7,6 +7,12 @@ export default class Audit {
         const response = await conn.getData(urlApi, params);
         return response;
     }
+    async getCount(params){
+        const conn = new Conexion()
+        const urlApi = 'http://localhost:3000/count';
+        const response = await conn.getData(urlApi, params);
+        return response;
+    }
 }
 
 

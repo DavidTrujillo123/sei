@@ -1,5 +1,5 @@
 <script>
-  import {audit} from '../../controller/audit.controller';
+  import {audit, auditCont} from '../../controller/audit.controller';
   import { onMount } from 'svelte';
   import Chart from 'chart.js/auto';
   import { getSession } from '../../Model/Session.js';
@@ -7,74 +7,72 @@
   const storedUser = getSession("user");
   let params = 1;//storedUser.user.us_id;
   let res = []
+  let resQuery = []
   let data1 = []
-  let recuentoSelects = {};
+  let dataCountSelect = []
+  let selectedOperation = "";
+  let myChart;
   
+  //Obtencion de la Data
   async function getDataAudit() {
     res = await audit(params);
-    data1 = res.response
-    contarSelectsPorUsuario();
-    
+    data1 = res.response;
   }
+
+  async function getAuditCont(query) {
+    resQuery = await auditCont(query);
+    return resQuery;
+  }
+
   onMount(() => {
     getDataAudit();
-    grapic_key();
     
   });
   
-  let selectedOperation = "";
-
+  //Cambio de vistas en el div dependiendo del combobox
   function mostrarDiv(event) {
-    
     selectedOperation = event.target.value;
-  }
-   // Supongamos que tienes estos datos
-   let datos = {
-    labels: ['Categoría 1', 'Categoría 2', 'Categoría 3'],
-    datasets: [{
-      data: [10, 40, 30],
-      backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56'],
-    }],
-  };
-
-
-  async function grapic_key(){
-      
-    let dataSelect = await contarSelectsPorUsuario();
-    const canvas = document.getElementById('miGraficaPastel');
-    console.log("aaaa",Object.keys(dataSelect));
-    const recuentoSelectsJSON = JSON.stringify(dataSelect);
-
-    let claves = [];
-
-  // Llenar el array 'claves' con las claves del objeto usando un bucle for
-  for (let clave in dataSelect) {
-    if (dataSelect.hasOwnProperty(clave)) {
-      claves.push(clave);
+    if(selectedOperation == "SELECT"){
+      grapic_key(selectedOperation,'GraficaSelect','pie');
+    }else if(selectedOperation == "UPDATE"){
+      grapic_key(selectedOperation,"GraficaUpdate",'bar');
+    }else if(selectedOperation == "DELETE"){
+      grapic_key(selectedOperation,"GraficaDelete", 'line');
+    }else if(selectedOperation == "INSERT"){
+      grapic_key(selectedOperation,"GraficaInsert", 'doughnut');
+    }else if(selectedOperation == "LOGIN:TRUE"){
+      grapic_key(selectedOperation,"GraficaLogin", 'doughnut');
     }
   }
-  console.log(claves);
 
-    console.log('Objeto convertido a JSON:', recuentoSelectsJSON);
+  async function grapic_key(query,location, typeGraph){
+    if (myChart) {
+        myChart.destroy();
+    }
+    dataCountSelect = await getAuditCont(query)
+    let nombres = dataCountSelect.map(dato => dato.us_name);
+    let conteos = dataCountSelect.map(dato => dato.count);
+    console.log(nombres);
+    console.log(conteos);
+    const canvas = document.getElementById(location);
     if (canvas instanceof HTMLCanvasElement) {
       const ctx = canvas.getContext('2d');
-
       if (ctx) {
         // Crear el gráfico de pastel
-        new Chart(ctx, {
-          type: 'bar',
+        myChart =  new Chart(ctx, {
+          type: typeGraph,
           data: {
-            labels: Object.keys(dataSelect),
+            labels: nombres,
             datasets: [{
-              data: Object.values(dataSelect),
-              backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56'],
+              data: conteos,
+              backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56','#7e0b87','#270e0e','#3a4f30','#00ff22'],
             }],
           },
           options: {
             plugins: {
               title: {
                 display: true,
-                text: 'Recuento de SELECTs por usuario'
+                text: 'Recuento de '+query+'s por usuario'
               }
             }
           }
@@ -88,49 +86,24 @@
   }
 
 
-   // Función para contar SELECTs por usuario
-   async function contarSelectsPorUsuario() {
-    // Crear un objeto para almacenar el recuento de SELECTs por usuario
-
-    // Iterar sobre los datos y contar SELECTs por usuario
-    data1.forEach(entry => {
-      if (entry.au_action === 'SELECT') {
-        if (!recuentoSelects[entry.us_name]) {
-          recuentoSelects[entry.us_name] = 1;
-        } else {
-          recuentoSelects[entry.us_name] += 1;
-        }
-      }
-    });
-    console.log(recuentoSelects);
-    return recuentoSelects
-
-    // Imprimir el recuento de SELECTs por usuario
-   
-  }
-
-  // Llamar a la función para contar SELECTs por usuario
-  
-
-
-
 </script>
+
 
 <main>
   <div class="form">
     <label for="operacion">Selecciona una opción:</label>
-  <select class="select" id="operacion" on:change={mostrarDiv}>
+  <select class="select" id="operacion" on:change={mostrarDiv} >
     <option value="selectone"></option>
     <option value="alltable">All Table</option>
-    <option value="select">Select</option>
-    <option value="update">Update</option>
-    <option value="delete">Delete</option>
-    <option value="insert">Insert</option>
+    <option value="SELECT">Select</option>
+    <option value="UPDATE">Update</option>
+    <option value="DELETE">Delete</option>
+    <option value="INSERT">Insert</option>
+    <option value="LOGIN:TRUE">Login</option>
   </select>
   </div>
   
   <div id="alltable" class:hidden={selectedOperation !== 'alltable'}>
-    <!-- Contenido para All Table -->
     <div class="container_table_audit">
       <h3>Tabla de Auditoria</h3>
       <table class="table_audit" >
@@ -172,45 +145,53 @@
     </div>
   </div>
   
-  <div id="select" class:hidden={selectedOperation !== 'select'}>
-    <!-- Contenido para Select -->
-    <h1>Gráfica de Pastel</h1>
-    <div class="cake_graph">
-
-      <canvas id="miGraficaPastel" ></canvas>
+  <div id="select" class:hidden={selectedOperation !== 'SELECT'}>
+    <h1>Gráfica del Select</h1>
+    <div class="select_graph">
+      <canvas id="GraficaSelect" ></canvas>
     </div>
     
   </div>
   
-  <div id="update" class:hidden={selectedOperation !== 'update'}>
-    <!-- Contenido para Update -->
-    <p>Update</p>
+  <div id="update" class:hidden={selectedOperation !== 'UPDATE'}>
+    <h1>Gráfica del Update</h1>
+    <div class="update_graph">
+      <canvas id="GraficaUpdate" ></canvas>
+    </div>
   </div>
   
-  <div id="delete" class:hidden={selectedOperation !== 'delete'}>
-    <!-- Contenido para Delete -->
-    <p>Delete</p>
+  <div id="delete" class:hidden={selectedOperation !== 'DELETE'}>
+    <h1>Gráfica del Delete</h1>
+    <div class="delete_graph">
+      <canvas id="GraficaDelete" ></canvas>
+    </div>
   </div>
   
-  <div id="insert" class:hidden={selectedOperation !== 'insert'}>
-    <!-- Contenido para Insert -->
-    <p>Insert</p>
+  <div id="insert" class:hidden={selectedOperation !== 'INSERT'}>
+    <h1>Gráfica del Insert</h1>
+    <div class="insert_graph">
+      <canvas id="GraficaInsert" ></canvas>
+    </div>
   </div>
-
-
-  
-  
-        
-
+  <div id="login" class:hidden={selectedOperation !== 'LOGIN:TRUE'}>
+    <h1>Gráfica del Login</h1>
+    <div class="login_graph">
+      <canvas id="GraficaLogin" ></canvas>
+    </div>
+  </div>
 </main>
 
 <style>
 
-.cake_graph{
+.select_graph,
+.update_graph,
+.insert_graph,
+.delete_graph,
+.login_graph{
   display: block;
     box-sizing: border-box;
-    height: 1106px;
-    width: 1106px;
+    height: 800px;
+    width: 800px;
 }
 
 
