@@ -1,10 +1,13 @@
 import {navigate } from "svelte-routing";
-export function isAutenticated(user) {
-    return user != null;
+import {getSession} from '../Model/Session'
+export function isAutenticated() {
+    let useSession = getSession('user');
+    return useSession != null;
 }
 
 export function navigateLogin(){
     navigate('/', { replace: true })
+    location.reload();
 }
 
 export function redirectWithRol(rol_id){

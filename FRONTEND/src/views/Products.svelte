@@ -3,6 +3,13 @@
     import { onMount } from "svelte";
     import NavBar from "./NavBar.svelte";
     import ProductDetail from "./Product_detail.svelte";
+    import {isAutenticated, navigateLogin} from "../../controller/autenticated.controller"
+    
+    let  userCredentials = isAutenticated();
+    if(!userCredentials){
+        navigateLogin();
+    }
+
     let query = [];
     let data = [];
     let productoSeleccionado = null;
@@ -33,6 +40,7 @@
     ];
 </script>
 
+{#if isAutenticated}
 <NavBar tablas={cat} flag_Cart={true}/>
 <section class="main container">
     <div class="cards-container">
@@ -61,7 +69,7 @@
         {/if}
     </div>
 </section>
-
+{/if}
 
 <style>
     .cards-container {

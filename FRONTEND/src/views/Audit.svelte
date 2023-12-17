@@ -3,7 +3,13 @@
   import { onMount } from 'svelte';
   import Chart from 'chart.js/auto';
   import { getSession } from '../../Model/Session.js';
-  
+  import {isAutenticated, navigateLogin} from "../../controller/autenticated.controller"
+
+    let  userCredentials = isAutenticated();
+    if(!userCredentials){
+        navigateLogin();
+    }
+
   const storedUser = getSession("user");
   let params = storedUser.user.us_id;
   let res = []
@@ -88,7 +94,7 @@
 
 </script>
 
-
+{#if isAutenticated}
 <main>
   <div class="form">
     <label for="operacion">Selecciona una opción:</label>
@@ -180,7 +186,7 @@
     </div>
   </div>
 </main>
-
+{/if}
 <style>
 
 .select_graph,

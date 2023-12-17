@@ -1,5 +1,11 @@
 <script>
     import NavBar from "./NavBar.svelte";
+    import {isAutenticated, navigateLogin} from "../../controller/autenticated.controller"
+
+    let  userCredentials = isAutenticated();
+    if(!userCredentials){
+        navigateLogin();
+    }
     let  cat = [
             "Usuarios",
             "Producto",
@@ -10,4 +16,6 @@
         ];
 </script>
 
+{#if userCredentials}
 <NavBar tablas={cat}/>
+{/if}

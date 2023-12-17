@@ -5,13 +5,7 @@
     validateRecaptcha,
   } from "../../controller/login.controller.js";
   import Error_login from "./Error_login.svelte";
-  import { getSession } from "../../Model/Session.js";
-  import { isAutenticated } from "../../controller/autenticated.controller.js";
-  import {navigate } from "svelte-routing";
-
-  let userSession = getSession('user');
-  let flag_credentials = isAutenticated(userSession);
-
+ 
   let flag;
   let res;
   let obj_data = {
@@ -25,10 +19,6 @@
     redirect(res, flag);
   }
 
-  // if (!flag_credentials) {
-        // navigate('/', { replace: true });
-        // location.reload();
-    // }
 </script>
 <!-- {#if flag_credentials} -->
 <div class="login">

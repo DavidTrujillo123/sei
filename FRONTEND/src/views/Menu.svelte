@@ -1,8 +1,19 @@
+<script>
+    import { removeSession } from "../../Model/Session.js";
+    import { navigateLogin } from "../../controller/autenticated.controller.js";
+
+    function handleSignOut() {
+        removeSession('user');
+        removeSession('code');
+        navigateLogin();
+    }
+</script>
+
 <div class="desktop-menu">
     <ul>
-        <li><a href="" class="title">My orders</a></li>
+        <!-- <li><a href="" class="title">My orders</a></li> -->
         <li><a href="" class="title">My account</a></li>
-        <li><a href="" class="title">Sing out</a></li>
+        <li><a href="" on:click={handleSignOut} class="title">Sing out</a></li>
     </ul>
 </div>
 
