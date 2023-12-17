@@ -23,6 +23,18 @@
     getDataProducts();
   });
 
+  let label_edit_product =[
+    "ID",
+    "Categoria",
+    "Nombre",
+    "Categoria",
+    "Precio",
+    "Cantidad",
+    "Imagen",
+    "Descripcion",
+    "Estado"
+  ]
+
   let cat = [
     "Usuarios",
     "Producto",
@@ -60,5 +72,6 @@
   rows_name={filas}
   rows_data={obj_par}
   name_componented={"Admin_Product"}
+  labels={label_edit_product}
 />
 {/if}

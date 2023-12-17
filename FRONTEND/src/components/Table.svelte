@@ -1,17 +1,19 @@
 <script>
   import { onMount } from "svelte";
-  import { getSession } from "../../Model/Session.js";
+  import { getSession, setSession } from "../../Model/Session.js";
   import { getUsers, deleteUser } from "../../controller/selectUser.controller.js";
   import { navigate } from "svelte-routing";
   export let dataObj;
   export let rows_name;
   export let rows_data;
   export let name_componented;
+  export let labels;
 
   
 
   const storedUser = getSession("user");
   let params = storedUser.user.us_id;
+
   async function delete_data(rowData) {
     const confirmation = confirm(
       `¿Estás seguro de eliminar al usuario ${rowData.us_name}?`,
@@ -31,10 +33,17 @@
     }
   }
 
-  export const edit_data = () => {
-    if (name_componented == "Admin_Users") {
+  export const edit_data = (data) => {
+    console.log(data);
+    setSession("obj_edit",data);
+    setSession("labels",labels);
+    if (name_componented == "Admin_Users") {      
       navigate("/User_Form");
     } else if (name_componented == "Admin_Product") {
+      navigate("/User_Form");
+    }else if (name_componented == "Admin_CatProduct") {
+      navigate("/User_Form");
+    }else if (name_componented == "Admin_Rol") {
       navigate("/User_Form");
     }
   };
@@ -75,7 +84,7 @@
                 {/if}
             {/each}
             <td>
-              <button on:click={edit_data}>Editar</button>
+              <button on:click={() => edit_data(data)}>Editar</button>
               <button on:click={() => delete_data(data)} class="delete"
                 >Eliminar</button
               >

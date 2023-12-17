@@ -5,7 +5,7 @@ let user_data = getSession('user');
 const rols = new Rol();
 
 export async function getRol() {
-    let data = await rols.getRol(user_data.role.rol_id);   
+    let data = await rols.getRol(user_data.user.us_id);   
     return data;
 }
 

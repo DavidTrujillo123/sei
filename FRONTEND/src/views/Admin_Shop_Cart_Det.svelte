@@ -1,5 +1,5 @@
 <script>
-    import { getCatProduct } from "../../controller/cat_product.controller";
+    import { getShop_Cart_Detail } from "../../controller/shop_cart_det.controller";
     import { onMount } from "svelte";
     import NavBar from "../components/NavBar.svelte";
     import Table from "../components/Table.svelte";
@@ -15,12 +15,12 @@
   
     let res = [];
     let data1 = [];
-    async function getDataCatProducts() {
-      res = await getCatProduct();
+    async function getDataShop_Cart_Detail() {
+      res = await getShop_Cart_Detail();
       data1 = res.response;
     }
     onMount(() => {
-      getDataCatProducts();
+      getDataShop_Cart_Detail();
     });
   
     let cat = [
@@ -33,14 +33,18 @@
     ];
   
     let filas = [
-      "Categoria ID",
-      "Category Product",
+      "Rol ID",
+      "Quantity",
+      "Price",
+      
       
     ];
   
     let obj_par = [
-      "cat_id",
-      "cat_name",
+      "det_id",
+      "det_quantity",
+      "det_price",
+      
       
     ];
   </script>
@@ -52,6 +56,6 @@
     dataObj={data1}
     rows_name={filas}
     rows_data={obj_par}
-    name_componented={"Admin_CatProduct"}
+    name_componented={"Admin_Shop_Cart_Det"}
   />
   {/if}
