@@ -24,6 +24,27 @@ const select_users = async (req, res) => {
   }
 };
 
+const select_users_active = async (req, res) => {
+  const adm_id = req.params.adm_id;
+  try {
+    const response = await db.any(`SELECT * FROM select_users($1) WHERE us_state = TRUE;`, [adm_id]);
+    if (response) {
+      res.json({
+        response,
+      });
+    } else {
+      res.json({
+        res: "Usuarios no encontrados",
+      });
+    }
+  } catch (error) {
+    res.json({
+      res: "ERROR",
+      error: error.message,
+    });
+  }
+};
+
 const select_products = async (req, res) => {
   const adm_id = req.params.adm_id;
   try {
@@ -542,7 +563,7 @@ const delete_user = async (req, res) => {
 };
 
 const delete_product = async (req, res) => {
-  const { pro_id_p, us_id_created } = req.body;
+  const { pro_id_p, us_id_created } = req.query;
   try {
     const response = await db.any(`CALL public.delete_product($1,$2);`, [
       pro_id_p,
@@ -714,6 +735,7 @@ const count_actions_table_by_user = async (req, res) => {
 
 module.exports = {
   select_users,
+  select_users_active,
   select_products,
   select_roles,
   select_audit,
