@@ -27,7 +27,6 @@
                 }
                 else{
                     navigateLogin();
-                    //cont = 5;
                 }
             }
         }

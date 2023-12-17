@@ -1,5 +1,5 @@
 import {navigate } from "svelte-routing";
-import {getSession} from '../Model/Session'
+import {getSession, removeSession} from '../Model/Session'
 export function isAutenticated() {
     let useSession = getSession('user');
     return useSession != null;
@@ -7,6 +7,7 @@ export function isAutenticated() {
 
 export function navigateLogin(){
     navigate('/', { replace: true })
+    removeSession('user');
     location.reload();
 }
 

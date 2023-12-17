@@ -1,6 +1,5 @@
 <script>
   import {
-    login,
     redirect,
     validateRecaptcha,
   } from "../../controller/login.controller.js";
@@ -15,8 +14,7 @@
 
   async function doSubmit() {
     flag = validateRecaptcha();
-    res = await login(obj_data);
-    redirect(res, flag);
+    redirect(obj_data, flag);
   }
 
 </script>
