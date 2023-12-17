@@ -61,8 +61,8 @@ export default class Conexion {
             const data = await response.json();
             return data;
         } catch (err) {
-            console.error('Error during DELETE:', err);
-            throw err;
+            console.error('Error during DELETE login:', err);
+            throw err; // Puedes manejar el error según tus necesidades
         }
     }
 }

@@ -1,5 +1,5 @@
 <script>
-    import { getUsers } from '../../controller/selectUser.controller';
+    import { getUsers,deleteUser } from '../../controller/selectUser.controller';
     import { onMount } from "svelte";
     import { getSession } from '../../Model/Session.js';
     import NavBar from "./NavBar.svelte";   
@@ -18,6 +18,8 @@
       res = await getUsers();
       data1 = res.response
     }
+
+    
     onMount(() => {
       getDataUsers();
     });
