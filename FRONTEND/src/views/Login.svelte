@@ -4,7 +4,7 @@
     redirect,
     validateRecaptcha,
   } from "../../controller/login.controller.js";
-  import Error_login from "./Error_login.svelte";
+  import Error_login from "../components/Error_login.svelte";
  
   let flag;
   let res;

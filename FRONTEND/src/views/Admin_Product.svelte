@@ -2,8 +2,8 @@
     import { getProduct } from '../../controller/product.controller';
     import { onMount } from "svelte";
     import { getSession } from '../../Model/Session.js';
-    import NavBar from "./NavBar.svelte";   
-    import Table from "./Table.svelte";    
+    import NavBar from "../components/NavBar.svelte";   
+    import Table from "../components/Table.svelte";    
     import { navigate } from 'svelte-routing';
   
     function irAVista2() {

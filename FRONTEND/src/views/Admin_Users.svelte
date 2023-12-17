@@ -1,8 +1,8 @@
 <script>
     import { getUsers, getUsersByState } from '../../controller/selectUser.controller';
-    import NavBar from "./NavBar.svelte";   
-    import Table from "./Table.svelte"; 
-    import ComboBox from "./ComboBox.svelte";
+    import NavBar from "../components/NavBar.svelte";   
+    import Table from "../components/Table.svelte"; 
+    import ComboBox from "../components/ComboBox.svelte";
 
     let res = []
     let data1 = [];

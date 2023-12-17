@@ -1,5 +1,5 @@
 <script>
-    import NavBar from "./NavBar.svelte";
+    import NavBar from "../components/NavBar.svelte";
     import {isAutenticated, navigateLogin} from "../../controller/autenticated.controller"
 
     let  userCredentials = isAutenticated();

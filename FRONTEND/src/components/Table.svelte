@@ -1,7 +1,7 @@
 <script>
   import { onMount } from "svelte";
   import { getSession } from "../../Model/Session.js";
-  import { getUsers, deleteUser } from "../../controller/selectUser.controller";
+  import { getUsers, deleteUser } from "../../controller/selectUser.controller.js";
   import { navigate } from "svelte-routing";
   export let dataObj;
   export let rows_name;

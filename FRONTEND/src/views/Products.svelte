@@ -1,8 +1,8 @@
 <script>
     import { getProduct } from "../../controller/product.controller";
     import { onMount } from "svelte";
-    import NavBar from "./NavBar.svelte";
-    import ProductDetail from "./Product_detail.svelte";
+    import NavBar from "../components/NavBar.svelte";
+    import ProductDetail from "../components/Product_detail.svelte";
     import {isAutenticated, navigateLogin} from "../../controller/autenticated.controller"
     
     let  userCredentials = isAutenticated();
