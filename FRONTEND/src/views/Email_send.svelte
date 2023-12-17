@@ -1,5 +1,5 @@
 <script>
-    import { isVerifiedEmail } from "../../controller/smtp.controller.js";
+    import { isVerifiedEmail, redirectByRole } from "../../controller/smtp.controller.js";
     import {
         isAutenticated,
         navigateLogin,
@@ -10,10 +10,23 @@
         navigateLogin();
     }
     let codigo = "";
-
+    let cont = 0;
     const doSubmit = () => {
         if (codigo.trim()) {
-            isVerifiedEmail(codigo);
+            let flag = isVerifiedEmail(codigo);
+            if(flag) {
+                redirectByRole();
+            }
+            else{
+                if(cont < 5){
+                    cont++;
+                    alert('Error! ingrese nuevamente el código. Intentos: '+cont);
+                }
+                else{
+                    cont = 0;
+                    navigateLogin();
+                }
+            }
         }
     };
 </script>

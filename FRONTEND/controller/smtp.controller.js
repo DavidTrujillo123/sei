@@ -7,7 +7,15 @@ const codeSession = getSession('code');
 
 export const isVerifiedEmail = (code) =>{
     if(codeSession == code){
-        let rol_id = userSession.user.rol_id;
+        return true;
+    }
+    else{
+        return false;
+    }
+}
+
+export const redirectByRole=()=>{
+    let rol_id = userSession.user.rol_id;
         if(rol_id == 0){
             navigate('/', { replace: true })
             removeSession('user');
@@ -25,8 +33,4 @@ export const isVerifiedEmail = (code) =>{
         else if(rol_id == 4){
             navigate('/auditor', { replace: true })
         }
-    }
-    else{
-        alert("Ta mal la clave")
-    }
 }

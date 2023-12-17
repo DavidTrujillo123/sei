@@ -31,7 +31,6 @@ export function redirect(response, flag){
     }
 }
 
-
 const createUser = () => {
     const { subscribe, set } = writable(null)
 
