@@ -631,6 +631,33 @@ const delete_det_shopping_order = async (req, res) => {
   }
 };
 
+
+const count_actions = async (req, res) => {
+  const action = req.params.action;
+  try {
+    const response = await db.any(`
+    select u.us_name, count(*)
+from audit a, users u
+where u.us_id = a.us_id
+and au_action = $1
+group by u.us_id;`,[action]);
+    if (response) {
+      res.json(
+        response
+      );
+    } else {
+      res.json({
+        res: "Usuarios no encontrados",
+      });
+    }
+  } catch (error) {
+    res.json({
+      res: "ERROR",
+      error: error.message,
+    });
+  }
+};
+
 module.exports = {
   select_users,
   select_products,
@@ -659,5 +686,7 @@ module.exports = {
   delete_product,
   delete_shopping_order,
   delete_role,
-  delete_user
+  delete_user,
+
+  count_actions
 };
