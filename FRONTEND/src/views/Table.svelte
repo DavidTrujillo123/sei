@@ -1,30 +1,47 @@
 <script>
     // import { getUsers } from '../../controller/selectUser.controller';
     import { onMount } from 'svelte';
+    import { getSession } from '../../Model/Session.js';
+    import { getUsers,deleteUser } from '../../controller/selectUser.controller';
     export let dataObj;
     export let rows_name;
     export let rows_data;
     export let name_componented;
     import { navigate } from 'svelte-routing';
 
+    const storedUser = getSession("user");
+    let params = storedUser.user.us_id;
+  
     
-    
-    export const delete_data = (rowData) => {
-    if (name_componented === 'Admin_Users') {
-      // Muestra una confirmación antes de eliminar
-      const isConfirmed = window.confirm("¿Estás seguro de que deseas eliminar este elemento?");
+    async function delete_data(rowData){    
       
-      if (isConfirmed) {
-        // Aquí puedes realizar la lógica para eliminar el elemento
-        const indexToDelete = dataObj.findIndex(item => item === rowData);
-        
-        if (indexToDelete !== -1) {
-          dataObj.splice(indexToDelete, 1);
-          console.log("Elemento eliminado", rowData);
-        }
-      }
+  // Mostrar un mensaje de confirmación al usuario
+  const confirmation = confirm(`¿Estás seguro de eliminar al usuario ${rowData.name}?`);
+
+  // Verificar si el usuario confirmó la eliminación
+  if (confirmation) {
+    // Llamar a la función deleteUser con los datos necesarios para la eliminación
+    
+    let object= {
+      us_id_p:params ,
+      us_id_created:rowData.us_id 
+
     }
+    console.log(object);
+    const result = await deleteUser(object);
+
+
+    // Verificar si la eliminación fue exitosa en el backend
+    if (result.success) {
+      // Si la eliminación fue exitosa, actualizar la lista de usuarios
+      location.reload();
+    } else {
+      // Si hubo un error en la eliminación, mostrar un mensaje de error en la consola
+      console.error('Error al eliminar usuario:', result.error);
+    }
+  }    
   };
+
 
     export const edit_data = () =>{
          if(name_componented == 'Admin_Users'){

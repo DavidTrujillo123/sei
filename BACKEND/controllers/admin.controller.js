@@ -658,6 +658,60 @@ group by u.us_id;`,[action]);
   }
 };
 
+const count_actions_by_user = async (req, res) => {
+  const id_user = req.params.id_user;
+  try {
+    const response = await db.any(`
+    select a.au_action, count(*)
+from audit a, users u
+where u.us_id = a.us_id
+and a.us_id = $1
+group by a.au_action;`,[id_user]);
+    if (response) {
+      res.json(
+        response
+      );
+    } else {
+      res.json({
+        res: "Actions no encontrados",
+      });
+    }
+  } catch (error) {
+    res.json({
+      res: "ERROR",
+      error: error.message,
+    });
+  }
+};
+
+const count_actions_table_by_user = async (req, res) => {
+  const id_user = req.params.id_user;
+  try {
+    const response = await db.any(
+     `select a.au_action, a.au_table, count(*)
+      from audit a, users u
+      where u.us_id = a.us_id
+      and a.us_id = $1
+      group by a.au_action, a.au_table
+      order by a.au_action;`,
+      [id_user]);
+    if (response) {
+      res.json(
+        response
+      );
+    } else {
+      res.json({
+        res: "Actions no encontrados",
+      });
+    }
+  } catch (error) {
+    res.json({
+      res: "ERROR",
+      error: error.message,
+    });
+  }
+};
+
 module.exports = {
   select_users,
   select_products,
@@ -688,5 +742,7 @@ module.exports = {
   delete_role,
   delete_user,
 
-  count_actions
+  count_actions,
+  count_actions_by_user,
+  count_actions_table_by_user
 };

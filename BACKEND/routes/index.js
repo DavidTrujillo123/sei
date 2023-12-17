@@ -30,7 +30,9 @@ const {
   delete_role,
   delete_user,
 
-  count_actions
+  count_actions,
+  count_actions_by_user,
+  count_actions_table_by_user
 } = require("../controllers/admin.controller");
 
 const { getProducts } = require("../controllers/general.controller");
@@ -43,6 +45,8 @@ router.post("/getProducts", getProducts);
 //RUTAS DE ADMINISTRADOR
 router.post("/isUser", isUser);
 router.get("/count/:action", count_actions);
+router.get("/countActions/:id_user", count_actions_by_user);
+router.get("/countActionsTable/:id_user", count_actions_table_by_user);
 
 
 router.get("/selectUsers/:adm_id", select_users);
