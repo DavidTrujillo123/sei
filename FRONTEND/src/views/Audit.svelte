@@ -5,7 +5,7 @@
   import { getSession } from '../../Model/Session.js';
   
   const storedUser = getSession("user");
-  let params = 1;//storedUser.user.us_id;
+  let params = storedUser.user.us_id;
   let res = []
   let resQuery = []
   let data1 = []
