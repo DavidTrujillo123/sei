@@ -4,7 +4,7 @@ import { getSession, removeSession,setSession } from '../Model/Session.js';
 
 const codeSession = getSession('code');
 const userSession = getSession('user1');
-
+console.log(codeSession);
 export const isVerifiedEmail = (code) =>{
     if(codeSession == code){
         setSession('user', userSession);
