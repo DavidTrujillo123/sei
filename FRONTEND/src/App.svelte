@@ -8,6 +8,10 @@
   import Admin from "./views/Admin.svelte";
   import User_Form from "./views/User_Form.svelte";
   import Admin_Product from "./views/Admin_Product.svelte";
+  import Admin_CatProduct from "./views/Admin_CatProduct.svelte";
+  import Admin_Rol from "./views/Admin_Rol.svelte";
+  import Admin_Shop_Cart from "./views/Admin_ShopCart.svelte";
+  import Admin_Shop_Cart_Det from "./views/Admin_Shop_Cart_Det.svelte";
   
 </script>
 
@@ -37,6 +41,18 @@
             </Route>
             <Route path="/Producto">
                 <Admin_Product></Admin_Product>
+            </Route>
+            <Route path="/Categorias%20Producto">
+                <Admin_CatProduct></Admin_CatProduct>
+            </Route>
+            <Route path="/Rol">
+                <Admin_Rol></Admin_Rol>
+            </Route>
+            <Route path="/Carrito%20de%20Compras">
+                <Admin_Shop_Cart></Admin_Shop_Cart>
+            </Route>
+            <Route path="/Detalle%20Carrito%20de%20Compras">
+                <Admin_Shop_Cart_Det></Admin_Shop_Cart_Det>
             </Route>
         </Router>
     <!-- </main>
