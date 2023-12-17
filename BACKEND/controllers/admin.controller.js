@@ -6,7 +6,7 @@ const { db } = require("../config/connection");
 const select_users = async (req, res) => {
   const adm_id = req.params.adm_id;
   try {
-    const response = await db.any(`SELECT * FROM select_users($1);`, [adm_id]);
+    const response = await db.any(`SELECT * FROM select_users($1) ORDER BY us_state DESC;`, [adm_id]);
     if (response) {
       res.json({
         response,
@@ -524,7 +524,7 @@ const update_category_product = async (req, res) => {
 //DELETES
 
 const delete_user = async (req, res) => {
-  const { us_id_p, us_id_created } = req.query;
+  const { us_id_p, us_id_created } = req.body;
   try {
     const response = await db.any(`CALL public.delete_user($1,$2);`, [
       us_id_p,

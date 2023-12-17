@@ -52,7 +52,7 @@ export default class Conexion {
     async deleteData(urlApi, obj_data){
         try {
             const response = await fetch(urlApi, {
-                method: 'DELETE',
+                method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
                 },
@@ -61,8 +61,8 @@ export default class Conexion {
             const data = await response.json();
             return data;
         } catch (err) {
-            console.error('Error during DELETE login:', err);
-            throw err; // Puedes manejar el error según tus necesidades
+            console.error('Error during DELETE:', err);
+            throw err;
         }
     }
 }

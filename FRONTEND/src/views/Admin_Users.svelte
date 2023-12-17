@@ -1,22 +1,15 @@
 <script>
     import { getUsers,deleteUser } from '../../controller/selectUser.controller';
     import { onMount } from "svelte";
-    import { getSession } from '../../Model/Session.js';
     import NavBar from "./NavBar.svelte";   
     import Table from "./Table.svelte";    
-    import { navigate } from 'svelte-routing';
   
-    function irAVista2() {
-      navigate('/User_Form');
-    }
-    const storedUser = getSession("user");
-    let params = storedUser.user.us_id;
     let res = []
     let data1 = [];
-    let e = null;
+
     async function getDataUsers() {
       res = await getUsers();
-      data1 = res.response
+      data1 = res.response;
     }
 
     
@@ -34,20 +27,22 @@
     ];
     
     let  filas = [
-      "Rol ID",
       "User ID",
+      "Rol",
       "Name User",
       "SurName",
+      "Estado",
       "Email",
       "Password", 
       "Acciones" 
     ];
 
     let obj_par = [
-      'rol_id',
       'us_id',
+      'rol_name',
       'us_name',
       'us_surname',
+      'us_state',
       'us_email',
       'us_password'
     ]

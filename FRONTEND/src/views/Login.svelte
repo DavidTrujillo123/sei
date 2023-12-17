@@ -25,12 +25,12 @@
     redirect(res, flag);
   }
 
-  if (!flag_credentials) {
-        navigate('/', { replace: true });
-        location.reload();
-    }
+  // if (!flag_credentials) {
+        // navigate('/', { replace: true });
+        // location.reload();
+    // }
 </script>
-{#if flag_credentials}
+<!-- {#if flag_credentials} -->
 <div class="login">
   <div class="form-container">
     <img src="../public/resource/logos/logo_yard_sale.svg" alt="logo" class="logo" />
@@ -73,7 +73,7 @@
     > -->
   </div>
 </div>
-{/if}
+<!-- {/if} -->
 <style>
  
   .login {

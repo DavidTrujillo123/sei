@@ -1,18 +1,18 @@
 import Usuario from '../Model/User.mjs';
 import { getSession } from '../Model/Session.js';
 
-async function getUsersQuery(obj_data) {
+let obj_data = getSession('user');
+
+export async function getUsers() {
     const users = new Usuario();
-    
-    let result = await users.getUsers(obj_data);
+    let result = await users.getUsers(obj_data.user.us_id);
     return result;
 }
 
-export async function getUsers() {
-    let obj_data = getSession('user');
-    
-    let data = await getUsersQuery(obj_data.user.us_id);
-    return data;
+export async function getUsersByID() {
+    const users = new Usuario();
+    let result = await users.getUsers(obj_data.user.us_id);
+    return result;
 }
 
 export async function postUsersQuery(obj_data) {
@@ -32,3 +32,4 @@ export async function deleteUser(obj_data) {
     let result = await users.deleteUsers(obj_data);
     return result;
 }
+

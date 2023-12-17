@@ -71,7 +71,8 @@ router.put("/updateDetShoppingOrder", update_det_shopping_order);
 router.put("/updateShoppingOrder", update_shopping_order);
 router.put("/updateRole", update_role);
 
-router.delete("/deleteUser", delete_user);
+//delete
+router.put("/deleteUser", delete_user);
 router.delete("/deleteProduct", delete_product);
 router.delete("/deleteCategoryProduct", delete_category_product);
 router.delete("/deleteDetShoppingOrder", delete_det_shopping_order);

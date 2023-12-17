@@ -5,6 +5,12 @@ export default class Usuario {
         const conn = new Conexion;
         const response = await conn.getData(urlApi, obj_data);
         return response;
+    } 
+    async getUsersByState(obj_data){
+        const urlApi = 'http://localhost:3000/selectUsersActive';
+        const conn = new Conexion;
+        const response = await conn.getData(urlApi, obj_data);
+        return response;
     }    
     async postUsers(obj_data){
         const urlApi = 'http://localhost:3000/insertUser';
