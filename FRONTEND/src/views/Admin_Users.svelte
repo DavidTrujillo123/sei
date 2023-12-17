@@ -1,77 +1,90 @@
 <script>
-    import { getUsers, getUsersByState } from '../../controller/selectUser.controller';
-    import NavBar from "../components/NavBar.svelte";   
-    import Table from "../components/Table.svelte"; 
-    import ComboBox from "../components/ComboBox.svelte";
+  import {
+    getUsers,
+    getUsersByState,
+  } from "../../controller/selectUser.controller";
+  import NavBar from "../components/NavBar.svelte";
+  import Table from "../components/Table.svelte";
+  import ComboBox from "../components/ComboBox.svelte";
 
-    let res = []
-    let data1 = [];
+  import {
+    isAutenticated,
+    navigateLogin,
+  } from "../../controller/autenticated.controller";
 
-    let optionComboBox = '';
+  let userCredentials = isAutenticated();
+  if (!userCredentials) {
+    navigateLogin();
+  }
 
-    function responseComboBox(event) {
-      optionComboBox = event.detail;
-      getData();
+  let res = [];
+  let data1 = [];
+
+  let optionComboBox = "";
+
+  function responseComboBox(event) {
+    optionComboBox = event.detail;
+    getData();
+  }
+
+  async function getDataUsers() {
+    res = await getUsers();
+    data1 = res.response;
+  }
+
+  async function getDataUsersByStatus() {
+    res = await getUsersByState();
+    data1 = res.response;
+  }
+
+  function getData() {
+    if (optionComboBox == "Activo") {
+      getDataUsersByStatus();
+    } else {
+      getDataUsers();
     }
+  }
 
-    async function getDataUsers() {
-      res = await getUsers();
-      data1 = res.response;
-    }
+  let cat = [
+    "Usuarios",
+    "Producto",
+    "Categorias Producto",
+    "Rol",
+    "Carrito de Compras",
+    "Detalle Carrito de Compras",
+  ];
 
-    async function getDataUsersByStatus() {
-      res = await getUsersByState();
-      data1 = res.response;
-    }
+  let filas = [
+    "User ID",
+    "Rol",
+    "Name User",
+    "SurName",
+    "Estado",
+    "Email",
+    "Password",
+    "Acciones",
+  ];
 
-    function getData(){
-      if(optionComboBox == 'Activo'){
-        getDataUsersByStatus();
-      }
-      else{
-        getDataUsers();
-      }
-    }
-   
-    let  cat = [
-        "Usuarios",
-        "Producto",
-        "Categorias Producto",
-        "Rol",
-        "Carrito de Compras",
-        "Detalle Carrito de Compras",
-    ];
-    
-    let  filas = [
-      "User ID",
-      "Rol",
-      "Name User",
-      "SurName",
-      "Estado",
-      "Email",
-      "Password", 
-      "Acciones" 
-    ];
+  let obj_par = [
+    "us_id",
+    "rol_name",
+    "us_name",
+    "us_surname",
+    "us_state",
+    "us_email",
+    "us_password",
+  ];
 
-    let obj_par = [
-      'us_id',
-      'rol_name',
-      'us_name',
-      'us_surname',
-      'us_state',
-      'us_email',
-      'us_password'
-    ]
+  let comboItems = ["Activo", "Inactivo"];
+</script>
 
-    let comboItems = [
-      "Activo",
-      "Inactivo"
-    ]
-
-    
-  </script>
-  <NavBar tablas={cat}/> 
-  <ComboBox comboItems={comboItems}  on:option={responseComboBox}/>
-  <Table dataObj={data1}  rows_name={filas} rows_data={obj_par} name_componented={'Admin_Users'}/>
-
-  
+{#if isAutenticated}
+<NavBar tablas={cat} />
+<ComboBox {comboItems} on:option={responseComboBox} />
+<Table
+  dataObj={data1}
+  rows_name={filas}
+  rows_data={obj_par}
+  name_componented={"Admin_Users"}
+/>
+{/if}
