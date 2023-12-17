@@ -20,7 +20,7 @@
   }
 
 </script>
-<!-- {#if flag_credentials} -->
+
 <div class="login">
   <div class="form-container">
     <img src="../public/resource/logos/logo_yard_sale.svg" alt="logo" class="logo" />
@@ -53,7 +53,7 @@
         class="input input-password"
         bind:value={obj_data.us_password}
       />
-      <div class="g-recaptcha" data-sitekey="6LcGyjApAAAAAH5ysd4UFBjdsxH60jPpy4GmKl0o"></div>
+      <div class="g-recaptcha" data-sitekey="6LcGyjApAAAAAH5ysd4UFBjdsxH60jPpy4GmKl0o" ></div>
       <input type="submit" value="Log in" class="primary-button login-button" />
       <!-- <a href="">Forgot my password</a> -->
     </form>
@@ -63,7 +63,7 @@
     > -->
   </div>
 </div>
-<!-- {/if} -->
+
 <style>
  
   .login {
