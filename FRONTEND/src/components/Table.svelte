@@ -41,6 +41,10 @@
       navigate("/User_Form");
     } else if (name_componented == "Admin_Product") {
       navigate("/User_Form");
+    }else if (name_componented == "Admin_CatProduct") {
+      navigate("/User_Form");
+    }else if (name_componented == "Admin_Rol") {
+      navigate("/User_Form");
     }
   };
 </script>

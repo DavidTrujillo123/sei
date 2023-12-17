@@ -1,12 +1,15 @@
 // import {user} from '../controller/login.controller';
-import {navigate } from "svelte-routing";
-import { getSession, removeSession } from '../Model/Session.js';
+import {navigate} from "svelte-routing";
+import { getSession, removeSession,setSession } from '../Model/Session.js';
 
 const userSession = getSession('user');
 const codeSession = getSession('code');
 
+removeSession('user');
+
 export const isVerifiedEmail = (code) =>{
     if(codeSession == code){
+        setSession('user', userSession);
         return true;
     }
     else{

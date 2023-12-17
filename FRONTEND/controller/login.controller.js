@@ -6,30 +6,30 @@ import { navigate } from "svelte-routing";
 
 let code;
 export let user;
-export async function login(obj_data) {
+
+async function login(obj_data) {
     const user = new Login();
     let response = await user.isUser(obj_data);
     return response;
 }
 
-export function redirect(response, flag){
-    
+export async function redirect(obj_data,flag){
+    let response = await login(obj_data);
+   
     if(response.res == "TRUE" && flag){
         const smtp = new SMTP();
-
         code = generateVerificationCode();
         user = createUser();
-
-        //user.setUser(response.user, code);
+    
         setSession("user", response);
         setSession("code", code);
 
         smtp.sendVerificationEmail(response.user.us_email,  code, response.user.us_nombre)
 
-        navigate('/emalsend', { replace: true })
-       
+        navigate('/emalsend', { replace: true })       
     }
 }
+
 
 const createUser = () => {
     const { subscribe, set } = writable(null)
@@ -56,4 +56,3 @@ export function validateRecaptcha() {
       return false;
     }
   }
-

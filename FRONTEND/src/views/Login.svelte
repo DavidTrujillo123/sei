@@ -1,10 +1,23 @@
 <script>
   import {
-    login,
     redirect,
     validateRecaptcha,
   } from "../../controller/login.controller.js";
   import Error_login from "../components/Error_login.svelte";
+  import { onMount } from 'svelte';
+
+  onMount(() => {
+    createRecaptcha()
+
+  });
+
+  function createRecaptcha(){
+    const script = document.createElement('script');
+    script.src = 'https://www.google.com/recaptcha/api.js';
+    script.async = true;
+    script.defer = true;
+    document.head.appendChild(script);
+  }
  
   let flag;
   let res;
@@ -15,8 +28,7 @@
 
   async function doSubmit() {
     flag = validateRecaptcha();
-    res = await login(obj_data);
-    redirect(res, flag);
+    redirect(obj_data, flag);
   }
 
 </script>
