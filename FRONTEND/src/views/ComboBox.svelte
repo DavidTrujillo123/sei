@@ -8,6 +8,7 @@
 </script>
 
 <div class="combo-box">
+    <h3 class='subtitle'>Filtro:</h3>
     <select class="select" bind:value={option}>
         {#each comboItems as item (item)}
             <option value={item} >{item}</option>
@@ -17,6 +18,10 @@
 </div>
 
 <style>
+    .subtitle {
+        display: inline-block;
+        margin-left: 10px;
+    }
     .combo-box {
         position: relative;
         display: inline-block;
