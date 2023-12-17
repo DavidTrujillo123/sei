@@ -2,11 +2,13 @@
   import { onMount } from "svelte";
   import { getSession } from "../../Model/Session.js";
   import { getUsers, deleteUser } from "../../controller/selectUser.controller";
+  import { navigate } from "svelte-routing";
   export let dataObj;
   export let rows_name;
   export let rows_data;
   export let name_componented;
-  import { navigate } from "svelte-routing";
+
+  
 
   const storedUser = getSession("user");
   let params = storedUser.user.us_id;
@@ -41,8 +43,10 @@
 <main>
   <div class="header-container">
     <h3>Table</h3>
+    
     <button class="new-user-button">Crear Nuevo</button>
   </div>
+  
   <table class="table_users">
     <thead>
       <tr>
@@ -65,7 +69,7 @@
             {#each rows_data as category (category)}
               	
                 {#if category.includes("img")}
-                  <td><img class="pro_img" src={data[category]} /> </td>
+                  <td><img class="pro_img" src={data[category]} alt='Imagenes'/> </td>
                 {:else}
                   <td> {data[category]}</td>
                 {/if}
@@ -167,4 +171,6 @@
   button.delete:hover {
     background-color: #d32f2f;
   }
+
+ 
 </style>

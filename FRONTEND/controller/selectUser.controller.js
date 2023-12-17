@@ -9,9 +9,9 @@ export async function getUsers() {
     return result;
 }
 
-export async function getUsersByID() {
+export async function getUsersByState() {
     const users = new Usuario();
-    let result = await users.getUsers(obj_data.user.us_id);
+    let result = await users.getUsersByState(obj_data.user.us_id);
     return result;
 }
 
