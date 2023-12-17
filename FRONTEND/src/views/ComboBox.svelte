@@ -1,19 +1,14 @@
 <script>
     export let comboItems = [''];
-    export let option = comboItems[0];
-    export let ejem;
-    export let ejem2;
+    import { createEventDispatcher } from 'svelte';
 
-    const ejem3 = () => {
-        if(option == 'Inactivo')
-            ejem();
-        else if(option == 'Activo')
-            ejem2();
-    }
+    const dispatch = createEventDispatcher();
+    let option;
+    $: dispatch('option', option);
 </script>
 
 <div class="combo-box">
-    <select class="select" on:change={ejem3} bind:value={option}>
+    <select class="select" bind:value={option}>
         {#each comboItems as item (item)}
             <option value={item} >{item}</option>
         {/each}
