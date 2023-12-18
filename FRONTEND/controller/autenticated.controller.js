@@ -15,10 +15,10 @@ export function redirectWithRol(rol_id){
         navigate('/admin', { replace: true })
     }
     else if(rol_id == 2){
-        navigate('/Producto', {replace: true })
+        navigate('/products', {replace: true })
     }
     else if(rol_id == 3){
-        navigate('/products', {replace: true })
+        navigate('/Producto', {replace: true })
     }
     else if(rol_id == 4){
         navigate('/audit', {replace: true })

@@ -23,8 +23,10 @@ export async function redirect(obj_data,flag){
  
         smtp.sendEmail(response.user.us_email,  code, response.user.us_nombre);
 
-        navigate('/emalsend', { replace: true })       
+        navigate('/emalsend', { replace: true })
+        return true    
     }
+    return false;
 }
 
 const generateVerificationCode = () =>{

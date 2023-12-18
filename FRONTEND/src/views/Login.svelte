@@ -5,6 +5,8 @@
   } from "../../controller/login.controller.js";
   import Error_login from "../components/Error_login.svelte";
   import { onMount } from 'svelte';
+  import { userSaver } from '../store.js'
+    import { sineOut } from "svelte/easing";
 
   onMount(() => {
     createRecaptcha()
@@ -20,15 +22,22 @@
   }
  
   let flag;
-  let res;
+  let flag_user;
+  let flag_data = false;
   let obj_data = {
     us_email: "",
     us_password: "",
   };
 
   async function doSubmit() {
-    flag = validateRecaptcha();
-    redirect(obj_data, flag);
+    if(obj_data.us_email == '' && obj_data.us_password == ''){
+      flag_data = false;
+    }
+    else{
+      flag_data = true;
+      flag = validateRecaptcha();
+      flag_user = await redirect(obj_data, flag);
+    }
   }
 
   let pattern = `^[^'\"\s]+$`;
@@ -36,9 +45,9 @@
 <div class="login">
   <div class="form-container">
     <img src="../public/resource/logos/logo_yard_sale.svg" alt="logo" class="logo" />
-    {#if res!=undefined}
+    {#if flag_data ==true}
       {#if flag == true}
-        { #if res.res = "FALSE"}
+        { #if flag_user==false}
           <Error_login message={'Error en el usuario o contraseña'}/>
         {/if}
       {:else}
@@ -53,7 +62,7 @@
         id="email"
         placeholder="example@example.com"
         class="input input-email"
-        pattern={pattern}
+        required
         bind:value={obj_data.us_email}
       />
 
@@ -64,6 +73,7 @@
         id="password"
         placeholder="************"
         class="input input-password"
+        required
         bind:value={obj_data.us_password}
       />
       <div class="g-recaptcha" data-sitekey="6LcGyjApAAAAAH5ysd4UFBjdsxH60jPpy4GmKl0o" ></div>

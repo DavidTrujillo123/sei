@@ -11,7 +11,7 @@
   if (!userCredentials) {
     navigateLogin();
   }
-  else if(userCredentials.rol_id == 3 || userCredentials.rol_id == 4 || userCredentials == 0){  
+  else if(userCredentials.rol_id == 2 || userCredentials.rol_id == 4 || userCredentials == 0){  
       redirectWithRol(userCredentials.rol_id)
     }
 
@@ -66,7 +66,7 @@
   ];
 </script>
 
-{#if userCredentials && (userCredentials.rol_id == 1 || userCredentials.rol_id == 2)}
+{#if userCredentials && (userCredentials.rol_id == 1 || userCredentials.rol_id == 3)}
 <NavBar tablas={cat} />
 
 <Table

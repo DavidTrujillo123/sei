@@ -10,7 +10,7 @@
   if (!userCredentials) {
     navigateLogin();
   }
-  else if(userCredentials.rol_id != 3){
+  else if(userCredentials.rol_id != 2){
       redirectWithRol(userCredentials.rol_id)
     }
 
