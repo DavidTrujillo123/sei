@@ -5,7 +5,7 @@ let user_data = getSession('user');
 const shopcart = new Shop_Cart();
 
 export async function getShop_Cart() {
-    let data = await shopcart.getShop_Cart(user_data.user.us_id);   
+    let data = await shopcart.getShop_Cart(user_data.us_id);   
     return data;
 }
 

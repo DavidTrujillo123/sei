@@ -4,7 +4,7 @@
   import { getSession, removeSession } from "../../Model/Session.js";
 
   const storedUser = getSession("user");
-  let params = storedUser.user.us_id;
+  let params = storedUser.us_id;
   let res = [];
   let data1 = [];
   async function getDataUsers() {

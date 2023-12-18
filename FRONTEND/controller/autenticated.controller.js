@@ -1,19 +1,21 @@
 import {navigate } from "svelte-routing";
-import {getSession, removeSession} from '../Model/Session'
-export function isAutenticated() {
-    let useSession = getSession('user');
-    return useSession != null;
-}
+import {getSession, removeSession} from '../Model/Session';
+import { codeSaver, userSaver } from "../src/store";
 
-export function isAutenticatedInit() {
-    let useSession = getSession('user1');
-    return useSession != null;
-}
+// export function isAutenticated(userSaver) {
+//     const unsubscribe = userSaver.subscribe(value => {
+//         //console.log(`El estado de autenticación es: ${value.state}`);
+//         return value.state;
+//     });
+
+//     // Cuando ya no necesitas la suscripción, puedes cancelarla
+//     unsubscribe();
+// }
+
 
 export function navigateLogin(){
     navigate('/', { replace: true })
-    removeSession('user');
-    removeSession('user1');
+    removeSession('user')
     location.reload();
 }
 
@@ -34,5 +36,5 @@ export function redirectWithRol(rol_id){
     else if(rol_id == 4){
         navigate('/admin', {replace: true })
     }
-    location.reload();
+    //location.reload();
 }

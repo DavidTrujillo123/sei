@@ -1,25 +1,30 @@
 <script>
     import { isVerifiedEmail, redirectByRole } from "../../controller/smtp.controller.js";
     import {
-        isAutenticatedInit,
         navigateLogin,
     } from "../../controller/autenticated.controller";
     import ErrorLogin from "../components/Error_login.svelte";
+    import { codeSaver, userSaver } from "../store.js";
+    import { setSession } from "../../Model/Session.js"
 
-    let userCredentials = isAutenticatedInit();
+
+    let flag = true;
+    // $userSaver == null || $userSaver.state == false
+    if($userSaver == null){
+        flag = false;
+        navigateLogin();
+    }
+
     let codigo = "";
     let cont = 5;
     let flag_error = false;
     
-    if (!userCredentials) {
-        navigateLogin();
-    }
-
     const doSubmit = () => {
         if (codigo.trim()) {
-            let flag = isVerifiedEmail(codigo);
+            let flag = isVerifiedEmail($codeSaver, codigo);
             if(flag) {
-                redirectByRole();
+                setSession('user',$userSaver.userData);
+                redirectByRole($userSaver.userData.rol_id);
             }
             else{
                 flag_error = true;
@@ -34,8 +39,7 @@
     };
     
 </script>
-
-{#if userCredentials}
+{#if flag}
     <div class="container_email">
         {#if flag_error}
         	<ErrorLogin message={'Error en el código por favor ingrese otra vez. Intentos: '+cont}/>

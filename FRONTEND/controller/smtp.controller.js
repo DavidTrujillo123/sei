@@ -1,15 +1,12 @@
 // import {user} from '../controller/login.controller';
 import {navigate} from "svelte-routing";
-import { getSession, removeSession,setSession } from '../Model/Session.js';
+import { userSaver } from "../src/store.js"
 
-const userSession = getSession('user1');
-
-export const isVerifiedEmail = (code) =>{
-    const codeSession = getSession('code');
+export const isVerifiedEmail = (codeSession, code) =>{
     console.log(codeSession);
     if(codeSession == code){
-        setSession('user', userSession);
-        removeSession('user1');
+        userSaver.updateState();
+        
         return true;
     }
     else{
@@ -17,17 +14,15 @@ export const isVerifiedEmail = (code) =>{
     }
 }
 
-export const redirectByRole=()=>{
-    let rol_id = userSession.user.rol_id;
+export const redirectByRole=(rol_id)=>{
+    console.log(rol_id);
         if(rol_id == 0){
             navigate('/', { replace: true })
-            removeSession('user1');
-                removeSession('code');
-        }
-        else if(rol_id == 1){
-            navigate('/admin', { replace: true })
         }
         else if(rol_id == 2){
+            navigate('/admin', { replace: true })
+        }
+        else if(rol_id == 1){
             navigate('/operador', { replace: true })
         }
         else if(rol_id == 3){

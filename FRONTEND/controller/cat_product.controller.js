@@ -5,7 +5,7 @@ let user_data = getSession('user');
 const catproducts = new Cat_Product ();
 
 export async function getCatProduct() {
-    let data = await catproducts.getCatProduct(user_data.user.us_id);   
+    let data = await catproducts.getCatProduct(user_data.us_id);   
     return data;
 }
 

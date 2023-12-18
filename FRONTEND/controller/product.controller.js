@@ -5,7 +5,7 @@ let user_data = getSession('user');
 const products = new Product();
 
 export async function getProduct() {
-    let data = await products.getProduct(user_data.user.us_id);   
+    let data = await products.getProduct(user_data.us_id);   
     return data;
 }
 

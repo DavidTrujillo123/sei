@@ -3,9 +3,7 @@ import SMTP from '../Model/SMTP.mjs';
 import { writable } from 'svelte/store';
 import { setSession } from '../Model/Session.js';
 import { navigate } from "svelte-routing";
-
-
-export let user;
+import { codeSaver, userSaver } from "../src/store.js"
 
 async function login(obj_data) {
     const user = new Login();
@@ -19,26 +17,13 @@ export async function redirect(obj_data,flag){
     if(response.res == "TRUE" && flag){
         const smtp = new SMTP();
         let code = generateVerificationCode();
-        user = createUser();
         
-        setSession("user1", response);
-        setSession("code", code);
-
+        userSaver.setData(response.user);
+        codeSaver.setData(code);
+ 
         smtp.sendEmail(response.user.us_email,  code, response.user.us_nombre);
 
         navigate('/emalsend', { replace: true })       
-    }
-}
-
-
-const createUser = () => {
-    const { subscribe, set } = writable(null)
-
-    return {
-        subscribe,
-        setUser: (user, code) => {
-            set({user, code}) 
-        }
     }
 }
 

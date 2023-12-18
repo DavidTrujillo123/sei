@@ -1,8 +1,10 @@
 <script>
     import NavBar from "../components/NavBar.svelte";
-    import {isAutenticated, navigateLogin} from "../../controller/autenticated.controller"
+    import {navigateLogin} from "../../controller/autenticated.controller"
+    import { getSession } from "../../Model/Session.js"
 
-    let  userCredentials = isAutenticated();
+    let  userCredentials = getSession('user');
+    
     if(!userCredentials){
         navigateLogin();
     }

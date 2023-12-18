@@ -6,15 +6,12 @@
   import NavBar from "../components/NavBar.svelte";
   import Table from "../components/Table.svelte";
   import ComboBox from "../components/ComboBox.svelte";
+  import { getSession } from "../../Model/Session.js"
 
-  import {
-    isAutenticated,
-    navigateLogin,
-  } from "../../controller/autenticated.controller";
-
-  let userCredentials = isAutenticated();
+  let  userCredentials = getSession('user');
+  console.log(userCredentials+"dsadasd");
   if (!userCredentials) {
-    navigateLogin();
+    // navigateLogin();
   }
 
   let res = [];
@@ -78,7 +75,7 @@
   let comboItems = ["Activo", "Inactivo"];
 </script>
 
-{#if isAutenticated}
+{#if userCredentials}
 <NavBar tablas={cat} />
 <ComboBox {comboItems} on:option={responseComboBox} />
 <Table

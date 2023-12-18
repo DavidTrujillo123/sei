@@ -32,7 +32,6 @@
   }
 
 </script>
-
 <div class="login">
   <div class="form-container">
     <img src="../public/resource/logos/logo_yard_sale.svg" alt="logo" class="logo" />

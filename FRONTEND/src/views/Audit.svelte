@@ -2,16 +2,17 @@
   import {audit, auditCont} from '../../controller/audit.controller';
   import { onMount } from 'svelte';
   import Chart from 'chart.js/auto';
-  import { getSession } from '../../Model/Session.js';
-  import {isAutenticated, navigateLogin} from "../../controller/autenticated.controller"
+  import { navigateLogin} from "../../controller/autenticated.controller"
+  import { getSession } from "../../Model/Session.js"
 
-    let  userCredentials = isAutenticated();
+let  userCredentials = getSession('user');    
     if(!userCredentials){
         navigateLogin();
     }
 
-  const storedUser = getSession("user");
-  let params = storedUser.user.us_id;
+    const storedUser = getSession("user");
+  let params = storedUser.us_id;
+  console.log(params);
   let res = []
   let resQuery = []
   let data1 = []
@@ -23,6 +24,7 @@
   async function getDataAudit() {
     res = await audit(params);
     data1 = res.response;
+    console.log(data1,'dsad');
   }
 
   async function getAuditCont(query) {
@@ -94,7 +96,7 @@
 
 </script>
 
-{#if isAutenticated}
+{#if userCredentials}
 <main>
   <div class="form">
     <label for="operacion">Selecciona una opción:</label>

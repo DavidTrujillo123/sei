@@ -3,12 +3,14 @@
     import { onMount } from "svelte";
     import NavBar from "../components/NavBar.svelte";
     import Table from "../components/Table.svelte";
+    import { userSaver } from "../store";
     import {
-      isAutenticated,
+   
       navigateLogin,
     } from "../../controller/autenticated.controller";
-  
-    let userCredentials = isAutenticated();
+    import { getSession } from "../../Model/Session.js"
+
+let  userCredentials = getSession('user');
     if (!userCredentials) {
       navigateLogin();
     }
@@ -49,7 +51,7 @@
     ];
   </script>
   
-  {#if isAutenticated}
+  {#if userCredentials}
   <NavBar tablas={cat} />
   
   <Table

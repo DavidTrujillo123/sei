@@ -2,11 +2,11 @@
     import { getSession } from "../../Model/Session.js";
     import Menu from "./Menu.svelte";
     import ShopingCart from "./Shoping_cart.svelte";
+    import { codeSaver, userSaver } from "../store.js";
     export let tablas;
     export let flag_Cart=false;
 
-    let data = getSession("user");
-
+    let  userCredentials = getSession('user');
     let flag_menu = false;
     
     let flag_shopping_cart = false;
@@ -43,7 +43,7 @@
     <div class="navbar-right">
         <ul>
             <li class="navbar-email">
-                {data.user.us_email}
+                {userCredentials.us_email}
                 <img
                     src="../public/resource/iconos/flechita.svg"
                     alt="arrow"

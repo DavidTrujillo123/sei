@@ -7,12 +7,12 @@
   export let rows_name;
   export let rows_data;
   export let name_componented;
-  export let labels;
+  export let labels = [];
 
   
 
   const storedUser = getSession("user");
-  let params = storedUser.user.us_id;
+  let params = storedUser.us_id;
 
   async function delete_data(rowData) {
     const confirmation = confirm(

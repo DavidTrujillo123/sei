@@ -5,13 +5,13 @@ let obj_data = getSession('user');
 
 export async function getUsers() {
     const users = new Usuario();
-    let result = await users.getUsers(obj_data.user.us_id);
+    let result = await users.getUsers(obj_data.us_id);
     return result;
 }
 
 export async function getUsersByState() {
     const users = new Usuario();
-    let result = await users.getUsersByState(obj_data.user.us_id);
+    let result = await users.getUsersByState(obj_data.us_id);
     return result;
 }
 

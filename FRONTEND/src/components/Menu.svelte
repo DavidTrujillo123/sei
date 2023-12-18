@@ -4,7 +4,6 @@
 
     function handleSignOut() {
         removeSession('user');
-        removeSession('code');
         navigateLogin();
     }
 </script>
