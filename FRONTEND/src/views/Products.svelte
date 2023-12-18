@@ -3,12 +3,15 @@
     import { onMount } from "svelte";
     import NavBar from "../components/NavBar.svelte";
     import ProductDetail from "../components/Product_detail.svelte";
-    import {navigateLogin} from "../../controller/autenticated.controller"
+    import { navigateLogin, redirectWithRol} from "../../controller/autenticated.controller"
     import { getSession } from "../../Model/Session.js"
 
     let  userCredentials = getSession('user');
-    if(!userCredentials){
-        navigateLogin();
+  if (!userCredentials) {
+    navigateLogin();
+  }
+  else if(userCredentials.rol_id != 3){
+      redirectWithRol(userCredentials.rol_id)
     }
 
     let query = [];
@@ -41,7 +44,7 @@
     ];
 </script>
 
-{#if userCredentials}
+{#if userCredentials && userCredentials.rol_id == 3}
 <NavBar tablas={cat} flag_Cart={true}/>
 <section class="main container">
     <div class="cards-container">

@@ -41,27 +41,34 @@
 </script>
 {#if flag}
     <div class="container_email">
-        {#if flag_error}
+        <div class="container_form">    
+            {#if flag_error}
         	<ErrorLogin message={'Error en el código por favor ingrese otra vez. Intentos: '+cont}/>
         {/if}
-        <h1>Código de Seguridad</h1>
-        <form on:submit|preventDefault={doSubmit}>
-            <h2>Código de Verificación</h2>
-            <label for="codigo"></label><br />
-            <input id="codigo" type="text" bind:value={codigo} required />
-            <input type="submit" value="Submit" />
-        </form>
+            <img src="../public/resource/logos/favicon_yard_sale.svg" alt="" srcset="">
+            <h1>Verificación de correo</h1>
+            <form on:submit|preventDefault={doSubmit}>
+                <h2>Código de Verificación</h2>
+                <label for="codigo"></label><br />
+                <input id="codigo" type="text" bind:value={codigo} required />
+                <input type="submit" value="Submit" />
+            </form>
+        </div>
     </div>
 {/if}
 
 <style>
     .container_email {
-        font-family: Arial, sans-serif;
-        background-color: #f4f4f4;
-        margin: 0;
-        padding: 0;
+        display: grid;
+        place-items: center;
+        height: 100vh;
+        margin: 0 auto;
+        /* background-color: #f4f4f4; */
     }
-
+    img{
+        height: 45px;
+        margin-right: 20px;
+    }
     form {
         max-width: 400px;
         margin: 20px auto;
@@ -73,11 +80,12 @@
 
     h1 {
         text-align: center;
+        display: inline-block;
         color: #333;
     }
 
     h2 {
-        color: #333;
+        color: var(--black);
     }
 
     label {

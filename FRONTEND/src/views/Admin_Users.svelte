@@ -7,12 +7,15 @@
   import Table from "../components/Table.svelte";
   import ComboBox from "../components/ComboBox.svelte";
   import { getSession } from "../../Model/Session.js"
+  import {navigateLogin, redirectWithRol} from "../../controller/autenticated.controller"
 
   let  userCredentials = getSession('user');
-  console.log(userCredentials+"dsadasd");
   if (!userCredentials) {
-    // navigateLogin();
+    navigateLogin();
   }
+  else if(userCredentials.rol_id != 1){
+      redirectWithRol(userCredentials.rol_id)
+    }
 
   let res = [];
   let data1 = [];
@@ -75,7 +78,7 @@
   let comboItems = ["Activo", "Inactivo"];
 </script>
 
-{#if userCredentials}
+{#if userCredentials && userCredentials.rol_id == 1}
 <NavBar tablas={cat} />
 <ComboBox {comboItems} on:option={responseComboBox} />
 <Table

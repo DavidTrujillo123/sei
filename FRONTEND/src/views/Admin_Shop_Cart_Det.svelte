@@ -3,15 +3,15 @@
     import { onMount } from "svelte";
     import NavBar from "../components/NavBar.svelte";
     import Table from "../components/Table.svelte";
-    import {
-     
-      navigateLogin,
-    } from "../../controller/autenticated.controller";
+    import { navigateLogin, redirectWithRol} from "../../controller/autenticated.controller"
     import { getSession } from "../../Model/Session.js"
 
-let  userCredentials = getSession('user');
-    if (!userCredentials) {
+    let  userCredentials = getSession('user');    
+    if(!userCredentials){
       navigateLogin();
+    }
+    else if(userCredentials.rol_id != 1){
+      redirectWithRol(userCredentials.rol_id)
     }
   
     let res = [];
@@ -50,7 +50,7 @@ let  userCredentials = getSession('user');
     ];
   </script>
   
-  {#if userCredentials}
+  {#if userCredentials && userCredentials.rol_id == 1}
   <NavBar tablas={cat} />
   
   <Table

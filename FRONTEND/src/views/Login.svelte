@@ -31,6 +31,7 @@
     redirect(obj_data, flag);
   }
 
+  let pattern = `^[^'\"\s]+$`;
 </script>
 <div class="login">
   <div class="form-container">
@@ -52,6 +53,7 @@
         id="email"
         placeholder="example@example.com"
         class="input input-email"
+        pattern={pattern}
         bind:value={obj_data.us_email}
       />
 

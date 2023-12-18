@@ -2,8 +2,7 @@
     import { getSession } from "../../Model/Session.js";
     import Menu from "./Menu.svelte";
     import ShopingCart from "./Shoping_cart.svelte";
-    import { codeSaver, userSaver } from "../store.js";
-    export let tablas;
+    export let tablas = [];
     export let flag_Cart=false;
 
     let  userCredentials = getSession('user');

@@ -2,13 +2,18 @@
   import {audit, auditCont} from '../../controller/audit.controller';
   import { onMount } from 'svelte';
   import Chart from 'chart.js/auto';
-  import { navigateLogin} from "../../controller/autenticated.controller"
+  import { navigateLogin, redirectWithRol} from "../../controller/autenticated.controller"
   import { getSession } from "../../Model/Session.js"
+    import NavBar from '../components/NavBar.svelte';
+    import ComboBox from '../components/ComboBox.svelte';
 
-let  userCredentials = getSession('user');    
+  let  userCredentials = getSession('user');    
     if(!userCredentials){
-        navigateLogin();
-    }
+      navigateLogin();
+  }
+    else if(userCredentials.rol_id != 4){
+      redirectWithRol(userCredentials.rol_id)
+  }
 
     const storedUser = getSession("user");
   let params = storedUser.us_id;
@@ -40,6 +45,7 @@ let  userCredentials = getSession('user');
   //Cambio de vistas en el div dependiendo del combobox
   function mostrarDiv(event) {
     selectedOperation = event.target.value;
+    console.log(selectedOperation);
     if(selectedOperation == "SELECT"){
       grapic_key(selectedOperation,'GraficaSelect','pie');
     }else if(selectedOperation == "UPDATE"){
@@ -96,9 +102,11 @@ let  userCredentials = getSession('user');
 
 </script>
 
-{#if userCredentials}
+{#if userCredentials && userCredentials.rol_id == 4 }
 <main>
+  <NavBar />
   <div class="form">
+    <!-- <ComboBox comboItems={['alltable','SELECT','UPDATE','DELETE', 'LOGIN:TRUE']} on:option={mostrarDiv}/> -->
     <label for="operacion">Selecciona una opción:</label>
   <select class="select" id="operacion" on:change={mostrarDiv} >
     <option value="selectone"></option>
@@ -204,11 +212,9 @@ let  userCredentials = getSession('user');
 
 
 .form {
-  width: 100%;
-  height: 100%;
-  padding-bottom: 75px;
-  color: white;
-  background: #2f383a;
+  padding-bottom: 25px;
+  color: black;
+  background: var(--verylight-pink);
 }
 
 .select {
