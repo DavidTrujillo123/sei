@@ -4,7 +4,7 @@ import { writable } from 'svelte/store';
 import { setSession } from '../Model/Session.js';
 import { navigate } from "svelte-routing";
 
-let code;
+
 export let user;
 
 async function login(obj_data) {
@@ -18,7 +18,7 @@ export async function redirect(obj_data,flag){
    
     if(response.res == "TRUE" && flag){
         const smtp = new SMTP();
-        code = generateVerificationCode();
+        let code = generateVerificationCode();
         user = createUser();
         
         setSession("user1", response);
