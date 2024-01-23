@@ -19,6 +19,8 @@
     let cont = 5;
     let flag_error = false;
     
+console.log($codeSaver);
+
     const doSubmit = () => {
         if (codigo.trim()) {
             let flag = isVerifiedEmail($codeSaver, codigo);

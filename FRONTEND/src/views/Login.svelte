@@ -43,6 +43,7 @@
   let pattern = `^[^'\"\s]+$`;
 </script>
 <div class="login">
+  <p>email: cristian181996@gmail.com - contraseña: admin</p>
   <div class="form-container">
     <img src="../public/resource/logos/logo_yard_sale.svg" alt="logo" class="logo" />
     {#if flag_data ==true}
