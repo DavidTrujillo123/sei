@@ -34,12 +34,12 @@ const {
 
   count_actions,
   count_actions_by_user,
-  count_actions_table_by_user
+  count_actions_table_by_user,
 } = require("../controllers/admin.controller");
 
 const { getProducts } = require("../controllers/general.controller");
 
-const { isUser } = require("../controllers/users.controller");
+const { isUser, isUserBlock, updateUserBlock} = require("../controllers/users.controller");
 
 //RUTA SMTP
 router.post("/smtp", send_email); 
@@ -49,6 +49,8 @@ router.post("/getProducts", getProducts);
 
 //RUTAS DE ADMINISTRADOR
 router.post("/isUser", isUser);
+router.post("/updateUserBlock", updateUserBlock);
+router.post("/isUserBlock", isUserBlock);
 router.get("/count/:action", count_actions);
 router.get("/countActions/:id_user", count_actions_by_user);
 router.get("/countActionsTable/:id_user", count_actions_table_by_user);

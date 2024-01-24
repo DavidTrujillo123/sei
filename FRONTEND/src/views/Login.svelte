@@ -21,13 +21,14 @@
     document.head.appendChild(script);
   }
  
-  let flag;
+  let flagcapcha;
   let flag_user;
   let flag_data = false;
   let obj_data = {
     us_email: "",
     us_password: "",
   };
+  let  cont = 1;
 
   async function doSubmit() {
     if(obj_data.us_email == '' && obj_data.us_password == ''){
@@ -35,19 +36,24 @@
     }
     else{
       flag_data = true;
-      flag = validateRecaptcha();
-      flag_user = await redirect(obj_data, flag);
+      flagcapcha = validateRecaptcha();
+      flag_user = await redirect(obj_data, flagcapcha);
     }
   }
+  
+  let isValidEmail = false;
+  const validateEmail = () => {
+    const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+    isValidEmail = emailPattern.test(obj_data.us_email);
+  };
 
-  let pattern = `^[^'\"\s]+$`;
 </script>
 <div class="login">
   <p>email: cristian181996@gmail.com - contraseña: admin</p>
   <div class="form-container">
     <img src="../public/resource/logos/logo_yard_sale.svg" alt="logo" class="logo" />
     {#if flag_data ==true}
-      {#if flag == true}
+      {#if flagcapcha == true}
         { #if flag_user==false}
           <Error_login message={'Error en el usuario o contraseña'}/>
         {/if}
@@ -65,8 +71,13 @@
         class="input input-email"
         required
         bind:value={obj_data.us_email}
+        on:input={validateEmail}
       />
-
+      {#if isValidEmail}
+      <p style="color: green;">Correo electrónico válido</p>
+    {:else}
+      <p style="color: red;">Correo electrónico no válido</p>
+    {/if}
       <label for="password" class="label">Password</label>
       <input
         type="password"
