@@ -4,23 +4,22 @@
     validateRecaptcha,
   } from "../../controller/login.controller.js";
   import Error_login from "../components/Error_login.svelte";
-  import { onMount } from 'svelte';
-  import { userSaver } from '../store.js'
-    import { sineOut } from "svelte/easing";
+  import { onMount } from "svelte";
+  import { userSaver } from "../store.js";
+  import { sineOut } from "svelte/easing";
 
   onMount(() => {
-    createRecaptcha()
-
+    createRecaptcha();
   });
 
-  function createRecaptcha(){
-    const script = document.createElement('script');
-    script.src = 'https://www.google.com/recaptcha/api.js';
+  function createRecaptcha() {
+    const script = document.createElement("script");
+    script.src = "https://www.google.com/recaptcha/api.js";
     script.async = true;
     script.defer = true;
     document.head.appendChild(script);
   }
- 
+
   let flagcapcha;
   let flag_user;
   let flag_data = false;
@@ -28,40 +27,75 @@
     us_email: "",
     us_password: "",
   };
-  let  cont = 1;
+  let cont = 1;
 
   async function doSubmit() {
-    if(obj_data.us_email == '' && obj_data.us_password == ''){
+    if (obj_data.us_email == "" && obj_data.us_password == "") {
       flag_data = false;
+    } else if(
+      !isValidEmail 
+      // || !hasLowercase ||
+      // !hasMinChar || !hasNumbers ||
+      // !hasLowercase || !hasSpecialChar
+      ){
+      flag_data = false;
+      alert("Cumpla con las normas solicitadas")
     }
     else{
+
       flag_data = true;
       flagcapcha = validateRecaptcha();
       flag_user = await redirect(obj_data, flagcapcha);
     }
   }
-  
+
   let isValidEmail = false;
   const validateEmail = () => {
     const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
     isValidEmail = emailPattern.test(obj_data.us_email);
   };
 
+
+
+  let hasNumbers = false;
+  let hasUppercase = false;
+  let hasLowercase = false;
+  let hasMinChar = false;
+  let hasSpecialChar = false;
+
+  const validatePassword = () => {
+    const numberPattern = /^.*\d+.*$/;
+    const uppercasePattern = /^.*[A-Z]+.*$/;
+    const lowercasePattern = /^.*[a-z]+.*$/;
+    const mincharPattern = /^.{8,}$/;
+    const hasspecialcharPattern = /^.*[!,@,#,$,^,&,*]+.*$/;
+
+    hasNumbers = numberPattern.test(obj_data.us_password);
+    hasUppercase = uppercasePattern.test(obj_data.us_password);
+    hasLowercase = lowercasePattern.test(obj_data.us_password);
+    hasMinChar = mincharPattern.test(obj_data.us_password);
+    hasSpecialChar = hasspecialcharPattern.test(obj_data.us_password);
+  };
 </script>
+
 <div class="login">
   <p>email: cristian181996@gmail.com - contraseña: admin</p>
   <div class="form-container">
-    <img src="../public/resource/logos/logo_yard_sale.svg" alt="logo" class="logo" />
-    {#if flag_data ==true}
+    <img
+      src="../public/resource/logos/logo_yard_sale.svg"
+      alt="logo"
+      class="logo"
+    />
+    {#if flag_data == true}
       {#if flagcapcha == true}
-        { #if flag_user==false}
-          <Error_login message={'Error en el usuario o contraseña'}/>
+        {#if flag_user == false}
+          <Error_login message={"Error en el usuario o contraseña"} />
         {/if}
       {:else}
-         <Error_login message={'Por favor realize el Captcha'}/>
+        <Error_login message={"Por favor realize el Captcha"} />
       {/if}
     {/if}
-    <form on:submit|preventDefault={ doSubmit} class="form">
+    <form on:submit|preventDefault={doSubmit} class="form">
       <label for="email" class="label">Email address</label>
       <input
         type="email"
@@ -74,10 +108,12 @@
         on:input={validateEmail}
       />
       {#if isValidEmail}
-      <p style="color: green;">Correo electrónico válido</p>
-    {:else}
-      <p style="color: red;">Correo electrónico no válido</p>
-    {/if}
+        <p style="color: green; margin-top: -10px">Correo electrónico válido</p>
+      {:else}
+        <p style="color: red; margin-top: -10px">
+          Correo electrónico no válido
+        </p>
+      {/if}
       <label for="password" class="label">Password</label>
       <input
         type="password"
@@ -87,8 +123,54 @@
         class="input input-password"
         required
         bind:value={obj_data.us_password}
+        on:input={validatePassword}
       />
-      <div class="g-recaptcha" data-sitekey="6LcGyjApAAAAAH5ysd4UFBjdsxH60jPpy4GmKl0o" ></div>
+      <p>Debe contener:</p>
+
+      {#if hasNumbers}
+        <p style="color: green; margin-top: -10px">Al menos 1 numero</p>
+      {:else}
+        <p style="color: red; margin-top: -10px">
+          Al menos 1 numero
+        </p>
+      {/if}
+
+      {#if hasUppercase}
+        <p style="color: green; margin-top: -10px">Al menos 1 mayuscula</p>
+      {:else}
+        <p style="color: red; margin-top: -10px">
+          Al menos 1 mayuscula
+        </p>
+      {/if}
+
+      {#if hasLowercase}
+        <p style="color: green; margin-top: -10px">Al menos 1 minuscula</p>
+      {:else}
+        <p style="color: red; margin-top: -10px">
+          Al menos 1 minuscula
+        </p>
+      {/if}
+
+      {#if hasMinChar}
+        <p style="color: green; margin-top: -10px">Al menos 8 caracteres</p>
+      {:else}
+        <p style="color: red; margin-top: -10px">
+          Al menos 8 caracteres
+        </p>
+      {/if}
+
+      {#if hasSpecialChar}
+        <p style="color: green; margin-top: -10px">Al menos 1 caracter especial: ! @ # $ ^ & *</p>
+      {:else}
+        <p style="color: red; margin-top: -10px">
+          Al menos 1 caracter especial: ! @ # $ ^ & *
+        </p>
+      {/if}
+
+      <div
+        class="g-recaptcha"
+        data-sitekey="6LcGyjApAAAAAH5ysd4UFBjdsxH60jPpy4GmKl0o"
+      ></div>
       <input type="submit" value="Log in" class="primary-button login-button" />
       <!-- <a href="">Forgot my password</a> -->
     </form>
@@ -100,7 +182,6 @@
 </div>
 
 <style>
- 
   .login {
     width: 100%;
     height: 100vh;
