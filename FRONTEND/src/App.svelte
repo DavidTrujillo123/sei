@@ -2,6 +2,7 @@
   import { Router, Route } from "svelte-routing";
   import Login from "./views/Login.svelte";
   import Admin from "./views/Admin.svelte";
+  import Register from "./views/Register.svelte";
   import Email_send from "./views/Email_send.svelte";
   
 </script>
@@ -11,6 +12,9 @@
         <Router>
             <Route path="/">
 				<Login></Login>
+			</Route>
+            <Route path="/reg">
+				<Register></Register>
 			</Route>
 			<Route path="/emalsend">
 				<Email_send></Email_send>
