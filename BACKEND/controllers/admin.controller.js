@@ -241,35 +241,29 @@ const insert_shopping_order = async (req, res) => {
 };
 
 const insert_user = async (req, res) => {
-  const {
-    rol_id_p,
-    us_name_p,
-    us_surname_p,
-    us_email_p,
-    us_password_p,
-    us_id_created,
+  const {    
+    us_name,
+    us_surname,
+    us_email,
+    us_password,    
   } = req.body;
   try {
-    const response = await db.any(
-      `CALL insert_users($1, $2, $3, $4, $5, true, $6);`,
-      [
-        rol_id_p,
-        us_name_p,
-        us_surname_p,
-        us_email_p,
-        us_password_p,
-        us_id_created,
+    const response = await db.one(
+      `INSERT INTO public.users(
+        rol_id, us_name, us_surname, us_email, us_password, us_state, us_date_created, us_block)
+        VALUES (1, $1, $2,$3, crypt($4, gen_salt('bf')),true, date_trunc('second', NOW()), false) RETURNING *;
+        `,
+      [        
+        us_name,
+        us_surname,
+        us_email,
+        us_password,    
+        
       ]
     );
     res.json({
       message: "Usuario creado con exito!!",
-      user: {
-        rol_id: rol_id_p,
-        us_name: us_name_p,
-        us_surname: us_surname_p,
-        us_email: us_email_p,
-        us_password: us_password_p
-      },
+      user: response
     });
   } catch (error) {
     res.json({
