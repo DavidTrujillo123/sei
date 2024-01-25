@@ -15,7 +15,7 @@ const config= {
 
     database: 'sei',
     user: 'postgres',
-    password: '12345678',
+    password: '200113',
  
 }
 const pgp = pgPromise({});

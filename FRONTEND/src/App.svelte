@@ -11,10 +11,10 @@
     <main> -->
         <Router>
             <Route path="/">
+                <Register></Register>
+            </Route>
+            <Route path="/login">
 				<Login></Login>
-			</Route>
-            <Route path="/reg">
-				<Register></Register>
 			</Route>
 			<Route path="/emalsend">
 				<Email_send></Email_send>

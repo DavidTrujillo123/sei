@@ -263,6 +263,7 @@ const insert_user = async (req, res) => {
     );
     res.json({
       message: "Usuario creado con exito!!",
+      flag: true,
       user: response
     });
   } catch (error) {
